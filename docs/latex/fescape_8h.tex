@@ -1,0 +1,82 @@
+\doxysection{src/fescape.h File Reference}
+\hypertarget{fescape_8h}{}\label{fescape_8h}\index{src/fescape.h@{src/fescape.h}}
+
+
+Filter unprintable characters from input stream.  
+
+
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+Include dependency graph for fescape.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{fescape_8h__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{fescape_8h_aa2fcbb42fa01bd818c6942546447cbb5}{usage}} (const char \texorpdfstring{$\ast$}{*}program)
+\begin{DoxyCompactList}\small\item\em Display help to user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{fescape_8h_a0420ebbf7acf9b7133deff908fe7f89a}{fescape}} (FILE \texorpdfstring{$\ast$}{*}input\+\_\+stream, FILE \texorpdfstring{$\ast$}{*}output\+\_\+stream, bool repeats, bool octal)
+\begin{DoxyCompactList}\small\item\em convert non-\/\+ASCII characters to hex or octal representation \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Filter unprintable characters from input stream. 
+
+\begin{DoxyAuthor}{Author}
+Robert Primmer (\href{https://github.com/rprimmer}{\texttt{ https\+://github.\+com/rprimmer}})
+\end{DoxyAuthor}
+Files that contain non-\/printable characters mess up the display when printed (e.\+g., via cat(1)). This program allows the display of such files, substituting hex (or optionally octal) codes for the non-\/printable characters. Optionally it can show the count for repeated non-\/printable characters rather than display each repeated hex/octal code.
+
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/03-\/24 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{fescape_8h_a0420ebbf7acf9b7133deff908fe7f89a}\label{fescape_8h_a0420ebbf7acf9b7133deff908fe7f89a} 
+\index{fescape.h@{fescape.h}!fescape@{fescape}}
+\index{fescape@{fescape}!fescape.h@{fescape.h}}
+\doxysubsubsection{\texorpdfstring{fescape()}{fescape()}}
+{\footnotesize\ttfamily void fescape (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{input\+\_\+stream,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{output\+\_\+stream,  }\item[{bool}]{repeats,  }\item[{bool}]{octal }\end{DoxyParamCaption})}
+
+
+
+convert non-\/\+ASCII characters to hex or octal representation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+\_\+stream} & Input stream to read. \\
+\hline
+{\em output\+\_\+stream} & Output stream to write. \\
+\hline
+{\em repeats} & If true, display repeated character count. \\
+\hline
+{\em octal} & If true, display control sequences in octal instead of hex. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{fescape_8h_aa2fcbb42fa01bd818c6942546447cbb5}\label{fescape_8h_aa2fcbb42fa01bd818c6942546447cbb5} 
+\index{fescape.h@{fescape.h}!usage@{usage}}
+\index{usage@{usage}!fescape.h@{fescape.h}}
+\doxysubsubsection{\texorpdfstring{usage()}{usage()}}
+{\footnotesize\ttfamily void usage (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{program }\end{DoxyParamCaption})}
+
+
+
+Display help to user. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em program} & Calling program name \\
+\hline
+\end{DoxyParams}

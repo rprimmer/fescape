@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug with LLDB",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/fescape",
+            "args": ["-g", "makefiled"],
+            "stopAtEntry": false, // Set to true if you want to stop at the start of 'main'
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "Build Project",
+            "MIMode": "lldb",
+            "externalConsole": false
+        }
+    ]
+}
