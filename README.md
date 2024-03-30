@@ -52,7 +52,7 @@ Haven't discovered any issues yet.
 
 1. **##\_\_VA_ARGS__**: GNU macro feature useful for variadic functions.
 
-2. **VS Code**: VSC doesn't play nice with make(1) when debugging from within VSC. You gotta pick a lane.
+2. **VS Code**: By default, VSC doesn't play nice with make(1) when debugging from within VSC. The VSC extension "Makefile Tools" is needed.
 
 ## TODO
 
