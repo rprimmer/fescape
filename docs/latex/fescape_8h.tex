@@ -23,7 +23,7 @@ Include dependency graph for fescape.\+h\+:\nopagebreak
 \item 
 void \mbox{\hyperlink{fescape_8h_aa2fcbb42fa01bd818c6942546447cbb5}{usage}} (const char \texorpdfstring{$\ast$}{*}program)
 \begin{DoxyCompactList}\small\item\em Display help to user. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{fescape_8h_a0420ebbf7acf9b7133deff908fe7f89a}{fescape}} (FILE \texorpdfstring{$\ast$}{*}input\+\_\+stream, FILE \texorpdfstring{$\ast$}{*}output\+\_\+stream, bool repeats, bool octal)
+void \mbox{\hyperlink{fescape_8h_aef3f8f3e6538d59d8d1728ba10dd9934}{fescape}} (FILE \texorpdfstring{$\ast$}{*}input\+\_\+stream, FILE \texorpdfstring{$\ast$}{*}output\+\_\+stream, bool repeats, bool octal, bool filter\+\_\+newlines)
 \begin{DoxyCompactList}\small\item\em convert non-\/\+ASCII characters to hex or octal representation \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -36,19 +36,19 @@ Robert Primmer (\href{https://github.com/rprimmer}{\texttt{ https\+://github.\+c
 Files that contain non-\/printable characters mess up the display when printed (e.\+g., via cat(1)). This program allows the display of such files, substituting hex (or optionally octal) codes for the non-\/printable characters. Optionally it can show the count for repeated non-\/printable characters rather than display each repeated hex/octal code.
 
 \begin{DoxyVersion}{Version}
-1.\+0 
+1.\+1 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-2024-\/03-\/24 
+2024-\/03-\/30 
 \end{DoxyDate}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{fescape_8h_a0420ebbf7acf9b7133deff908fe7f89a}\label{fescape_8h_a0420ebbf7acf9b7133deff908fe7f89a} 
+\Hypertarget{fescape_8h_aef3f8f3e6538d59d8d1728ba10dd9934}\label{fescape_8h_aef3f8f3e6538d59d8d1728ba10dd9934} 
 \index{fescape.h@{fescape.h}!fescape@{fescape}}
 \index{fescape@{fescape}!fescape.h@{fescape.h}}
 \doxysubsubsection{\texorpdfstring{fescape()}{fescape()}}
-{\footnotesize\ttfamily void fescape (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{input\+\_\+stream,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{output\+\_\+stream,  }\item[{bool}]{repeats,  }\item[{bool}]{octal }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void fescape (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{input\+\_\+stream,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{output\+\_\+stream,  }\item[{bool}]{repeats,  }\item[{bool}]{octal,  }\item[{bool}]{filter\+\_\+newlines }\end{DoxyParamCaption})}
 
 
 
@@ -63,6 +63,8 @@ convert non-\/\+ASCII characters to hex or octal representation
 {\em repeats} & If true, display repeated character count. \\
 \hline
 {\em octal} & If true, display control sequences in octal instead of hex. \\
+\hline
+{\em filter\+\_\+newlines} & If false, do not filter out newline characters. \\
 \hline
 \end{DoxyParams}
 \Hypertarget{fescape_8h_aa2fcbb42fa01bd818c6942546447cbb5}\label{fescape_8h_aa2fcbb42fa01bd818c6942546447cbb5} 

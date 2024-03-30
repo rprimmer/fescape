@@ -8,8 +8,9 @@ Short and simple. Follow the original Unix philosophy of a program doing just on
 
 ## File Locations
 
-* Binary executable (`fescape`) located in `~/bin`
+* Binary executable (`fescape`) located in `/usr/local/bin`
 * Manpage (`fescape.1`) located in `/usr/local/share/man/man1`
+* API documentation located in project folder as `fescape-apidoc.pdf`. Doc source files in `docs` folder.
 
 ## Arguments
 
@@ -17,9 +18,10 @@ Short and simple. Follow the original Unix philosophy of a program doing just on
 
 ## Switches
 
-* `-c, --count` : display a count for repeated characters instead of the characters themselves
-* `-h, --help`  : display usage
-* `-o, --octal` : display octal codes instead of default hex codes
+* `-r, --repeats` : display a count for repeated characters instead of displaying the characters themselves
+* `-h, --help`    : display usage
+* `-n, --newline` : don't filter newlines
+* `-o, --octal`   : display octal codes instead of default hex codes
 
 ## Key Functions
 
@@ -36,6 +38,11 @@ Short and simple. Follow the original Unix philosophy of a program doing just on
 `fescape(FILE *input_stream, FILE *output_stream, bool repeats, bool octal)`
 
 * Performs the filter function.
+
+### Dependencies
+
+* system-actions.{c,h}
+* actions.{c,h}
 
 ## Results
 

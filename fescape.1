@@ -15,12 +15,17 @@ rather than display each repeated hex/octal code.
 .br 
 Displays command help.
 .TP
-\fB\-c, --count\fR
+\fB\-r, --repeats\fR
 .br 
 Display a count for repeated characters instead of the characters themselves.
 .TP
+\fB\-n, --newline\fR
+.br
+Do not filter newline characters.
+.TP
 \fB\-o, --octal\fR
-display octal codes instead of default hex codes.
+.br
+Display octal codes instead of default hex codes.
 .SH ARGUMENTS
 .TP
 .TP 
@@ -39,7 +44,7 @@ fescape
 .TP
 fescape -
 .TP
-fescape BinaryFile1 BinaryFile2
+fescape -cn File1 BinaryFile2
 .SH FILE LOCATIONS 
 .TP
 /usr/local/bin/fescape or ~/bin

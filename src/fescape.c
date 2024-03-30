@@ -6,6 +6,7 @@ void usage(const char *program) {
     printf("Options:\n");
     printf("  -h, --help        Display this help message and exit\n");
     printf("  -r, --repeats     Show repeated non-ASCII chars in brackets\n");
+    printf("  -n, --newline     Do not filter newline characters\n"); 
     printf("  -o, --octal       Display non-ASCII characters in octal instead of hex\n\n");
     printf("Arguments:\n");
     printf("  filename(s)       filename(s) to display\n");
@@ -15,7 +16,7 @@ void usage(const char *program) {
     printf("  %s\n", program);
     printf("  %s -\n", program);
     printf("  %s MyBinaryFile\n", program);
-    printf("  %s MyBinaryFile1 MyBinaryFile2 MyBinaryFile3\n\n", program);
+    printf("  %s File1 MyBinaryFile2 File3\n\n", program);
     // printf("Restrictions:\n");
     // printf("  None.\n\n");
     // printf("Notes:\n");
@@ -23,7 +24,7 @@ void usage(const char *program) {
     exit(EXIT_SUCCESS);
 } // usage()
 
-void fescape(FILE *input_stream, FILE *output_stream, bool repeats, bool octal) {
+void fescape(FILE *input_stream, FILE *output_stream, bool repeats, bool octal, bool filter_newlines) {
     int current_char;
     int saved_char = EOF;
     int repeat_count = 1;
@@ -34,27 +35,41 @@ void fescape(FILE *input_stream, FILE *output_stream, bool repeats, bool octal) 
             HANDLE_ERROR("unable to read input stream");
         }
 
-        if (iscntrl(current_char) || !isprint(current_char)) { 
+        // Handle newlines separately when not filtering them
+        if (!filter_newlines && current_char == '\n') {
+            if (repeat_count > 1 && repeats && saved_char != '\n') {
+                fprintf(output_stream, "[%i]", repeat_count);
+                repeat_count = 1;
+            }
+            putc(current_char, output_stream);
+            saved_char = current_char;
+            continue; 
+        }
+
+        if (iscntrl(current_char) || !isprint(current_char)) {
             if (current_char == saved_char && repeats) {
                 repeat_count++;
             } else {
-                if (repeat_count > 1 && repeats) { // Handle repeat printing.
+                if (repeat_count > 1 && repeats) { 
                     fprintf(output_stream, "[%i]", repeat_count);
                     repeat_count = 1;
                 }
                 saved_char = current_char;
-                fprintf(output_stream, octal ? "<%.3o>" : "<0x%02x>", current_char);
+                if (current_char != '\n' || filter_newlines) {
+                    fprintf(output_stream, octal ? "<%.3o>" : "<0x%02x>", current_char);
+                }
             }
         } else {
-            if (repeat_count > 1 && repeats) { // Final repeat count print for control sequences.
+            if (repeat_count > 1 && repeats) { // Final repeat count for control sequences
                 fprintf(output_stream, "[%i]", repeat_count);
                 repeat_count = 1;
             }
-            putc(current_char, output_stream); // Print printable characters directly.
-            saved_char = EOF; // Reset saved_char since we're out of a repeat or control sequence.
+            putc(current_char, output_stream); 
+            saved_char = EOF; 
         }
     }
-    if (repeat_count > 1 && repeats) { // Handle the case for the last character being repeated.
+    // Handle the case for the last character being repeated
+    if (repeat_count > 1 && repeats && saved_char != '\n') { 
         fprintf(output_stream, "[%i]", repeat_count);
     }
 }

@@ -15,6 +15,7 @@ int main(int argc, char **argv) {
     FILE *fp; 
     bool repeat_count = false; 
     bool show_octal = false;
+    bool filter_newlines = true;
 
 #ifdef DEBUG
     fprintf(stderr, "%s, %d: argc: %d, optind: %d\n", basename(__FILE__), __LINE__, argc, optind);
@@ -25,21 +26,25 @@ int main(int argc, char **argv) {
     int option_index = 0;
     static struct option long_options[] = {{"help", no_argument, 0, 'h'},
                                            {"repeats", no_argument, 0, 'r'},
+                                           {"newline", no_argument, 0, 'n'},
                                            {"octal", no_argument, 0, 'o'},
                                            {0, 0, 0, 0}};
-    while ((option = getopt_long(argc, argv, "hco", long_options, &option_index)) != -1) {
+    while ((option = getopt_long(argc, argv, "hrno", long_options, &option_index)) != -1) {
         switch (option) {
         case 'h':
             usage(program);
             break;
-        case 'c':
-            repeat_count = true; 
+        case 'r':
+            repeat_count = true;
+            break;
+        case 'n':
+            filter_newlines = false;
             break;
         case 'o':
-            show_octal = true;  
+            show_octal = true;
             break;
         default:
-            HANDLE_ERROR("invalid switch provided"); 
+            HANDLE_ERROR("invalid switch provided");
         }
     }
 
@@ -51,16 +56,16 @@ int main(int argc, char **argv) {
     int retval = 0;
 
     if (optind >= argc)
-        fescape(stdin, stdout, repeat_count, show_octal);
+        fescape(stdin, stdout, repeat_count, show_octal, filter_newlines);
     else
         for (; optind < argc; optind++) {
             if (strcmp(argv[optind], "-") == 0)
-                fescape(stdin, stdout, repeat_count, show_octal);
+                fescape(stdin, stdout, repeat_count, show_octal, filter_newlines);
             else {
                 if ((fp = fopen(argv[optind], "r")) == NULL) 
                     HANDLE_ERROR("cannot open file: %s", argv[optind]);
 
-                fescape(fp, stdout, repeat_count, show_octal);
+                fescape(fp, stdout, repeat_count, show_octal, filter_newlines);
                 fprintf(stdout, "\n");
                 fclose(fp);
             } 
