@@ -1,0 +1,99 @@
+.TH "src/fescape.h" 3 "Version 1.1" "fescape" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/fescape.h \- Filter unprintable characters from input stream\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fR#include <ctype\&.h>\fP
+.br
+\fR#include <stdio\&.h>\fP
+.br
+\fR#include <stdbool\&.h>\fP
+.br
+\fR#include <stdlib\&.h>\fP
+.br
+\fR#include <string\&.h>\fP
+.br
+\fR#include <unistd\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBusage\fP (const char *program)"
+.br
+.RI "Display help to user\&. "
+.ti -1c
+.RI "void \fBfescape\fP (FILE *input_stream, FILE *output_stream, bool repeats, bool octal, bool filter_newlines)"
+.br
+.RI "convert non-ASCII characters to hex or octal representation "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Filter unprintable characters from input stream\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Robert Primmer (https://github.com/rprimmer)
+.RE
+.PP
+Files that contain non-printable characters mess up the display when printed (e\&.g\&., via cat(1))\&. This program allows the display of such files, substituting hex (or optionally octal) codes for the non-printable characters\&. Optionally it can show the count for repeated non-printable characters rather than display each repeated hex/octal code\&.
+.PP
+\fBVersion\fP
+.RS 4
+1\&.1 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2024-03-30 
+.RE
+.PP
+
+.PP
+Definition in file \fBfescape\&.h\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "void fescape (FILE * input_stream, FILE * output_stream, bool repeats, bool octal, bool filter_newlines)"
+
+.PP
+convert non-ASCII characters to hex or octal representation 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinput_stream\fP Input stream to read\&. 
+.br
+\fIoutput_stream\fP Output stream to write\&. 
+.br
+\fIrepeats\fP If true, display repeated character count\&. 
+.br
+\fIoctal\fP If true, display control sequences in octal instead of hex\&. 
+.br
+\fIfilter_newlines\fP If false, do not filter out newline characters\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB27\fP of file \fBfescape\&.c\fP\&.
+.SS "void usage (const char * program)"
+
+.PP
+Display help to user\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIprogram\fP Calling program name 
+.RE
+.PP
+
+.PP
+Definition at line \fB4\fP of file \fBfescape\&.c\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for fescape from the source code\&.

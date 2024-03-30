@@ -1,0 +1,81 @@
+\doxysection{main.\+c}
+\hypertarget{main_8c_source}{}\label{main_8c_source}\index{src/main.c@{src/main.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <getopt.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <libgen.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{fescape_8h}{fescape.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{system-actions_8h}{system-\/actions.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00012}00012\ \textcolor{keywordtype}{int}\ main(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ **argv)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00013}00013\ \ \ \ \ \textcolor{keywordtype}{char}\ program[PATH\_MAX];}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00014}00014\ \ \ \ \ basename\_r(argv[0],\ program);\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00015}00015\ \ \ \ \ FILE\ *fp;\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00016}00016\ \ \ \ \ \textcolor{keywordtype}{bool}\ repeat\_count\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00017}00017\ \ \ \ \ \textcolor{keywordtype}{bool}\ show\_octal\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{bool}\ filter\_newlines\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00020}00020\ \textcolor{preprocessor}{\#ifdef\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00021}00021\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}\%s,\ \%d:\ argc:\ \%d,\ optind:\ \%d\(\backslash\)n"{}},\ basename(\_\_FILE\_\_),\ \_\_LINE\_\_,\ argc,\ optind);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00022}00022\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ Handle\ switches}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00025}00025\ \ \ \ \ \textcolor{keywordtype}{int}\ option\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00026}00026\ \ \ \ \ \textcolor{keywordtype}{int}\ option\_index\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{struct\ }option\ long\_options[]\ =\ \{\{\textcolor{stringliteral}{"{}help"{}},\ no\_argument,\ 0,\ \textcolor{charliteral}{'h'}\},}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}repeats"{}},\ no\_argument,\ 0,\ \textcolor{charliteral}{'r'}\},}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}newline"{}},\ no\_argument,\ 0,\ \textcolor{charliteral}{'n'}\},}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}octal"{}},\ no\_argument,\ 0,\ \textcolor{charliteral}{'o'}\},}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{0,\ 0,\ 0,\ 0\}\};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00032}00032\ \ \ \ \ \textcolor{keywordflow}{while}\ ((option\ =\ getopt\_long(argc,\ argv,\ \textcolor{stringliteral}{"{}hrno"{}},\ long\_options,\ \&option\_index))\ !=\ -\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (option)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'h'}:}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ usage(program);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'r'}:}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ repeat\_count\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'n'}:}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ filter\_newlines\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'o'}:}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ show\_octal\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}invalid\ switch\ provided"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00051}00051\ \textcolor{preprocessor}{\#ifdef\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00052}00052\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}\%s,\ \%d:\ argc:\ \%d,\ optind:\ \%d\(\backslash\)n"{}},\ basename(\_\_FILE\_\_),\ \_\_LINE\_\_,\ argc,\ optind);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00053}00053\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00055}00055\ \ \ \ \ \textcolor{comment}{//\ Handle\ arguments\ and\ actions}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00056}00056\ \ \ \ \ \textcolor{keywordtype}{int}\ retval\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (optind\ >=\ argc)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ fescape(stdin,\ stdout,\ repeat\_count,\ show\_octal,\ filter\_newlines);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ optind\ <\ argc;\ optind++)\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(argv[optind],\ \textcolor{stringliteral}{"{}-\/"{}})\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fescape(stdin,\ stdout,\ repeat\_count,\ show\_octal,\ filter\_newlines);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((fp\ =\ fopen(argv[optind],\ \textcolor{stringliteral}{"{}r"{}}))\ ==\ NULL)\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}cannot\ open\ file:\ \%s"{}},\ argv[optind]);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fescape(fp,\ stdout,\ repeat\_count,\ show\_octal,\ filter\_newlines);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fclose(fp);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{return}\ ferror(stdout)\ ?\ EOF\ :\ retval;}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00075}00075\ \}\ }
+
+\end{DoxyCode}

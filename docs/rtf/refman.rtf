@@ -1,0 +1,1413 @@
+{\rtf1\ansi\ansicpg1252\uc1 \deff0\deflang1033\deflangfe1033
+{\fonttbl {\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+{\f1\fswiss\fcharset0\fprq2{\*\panose 020b0604020202020204}Arial;}
+{\f2\fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}
+{\f3\froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}
+}
+{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red0\green255\blue255;\red0\green255\blue0;\red255\green0\blue255;\red255\green0\blue0;\red255\green255\blue0;\red255\green255\blue255;\red0\green0\blue128;\red0\green128\blue128;\red0\green128\blue0;\red128\green0\blue128;\red128\green0\blue0;\red128\green128\blue0;\red128\green128\blue128;\red192\green192\blue192;\red0\green128\blue0;\red96\green64\blue32;\rede0\green128\blue0;\red128\green0\blue0;\red128\green96\blue32;\red0\green32\blue128;\red0\green128\blue128;\red255\green0\blue255;\red0\green0\blue0;\red112\green0\blue112;\red255\green0\blue0;}
+{\stylesheet
+{\widctlpar\adjustright \fs20\cgrid \snext0 Normal;}
+{\paperw11900\paperh16840\margl1800\margr1800\margt1440\margb1440\gutter0\ltrsect}
+{\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid \sbasedon0 \snext0 heading 1;}
+{\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid \sbasedon0 \snext0 heading 2;}
+{\s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid \sbasedon0 \snext0 heading 3;}
+{\s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext0 heading 4;}{\*\cs10 \additive Default Paragraph Font;}
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext0 heading 5;}{\*\cs10 \additive Default Paragraph Font;}
+{\s15\qc\sb240\sa60\widctlpar\outlinelevel0\adjustright \b\f1\fs32\kerning28\cgrid \sbasedon0 \snext15 Title;}
+{\s16\qc\sa60\widctlpar\outlinelevel1\adjustright \f1\cgrid \sbasedon0 \snext16 Subtitle;}
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid \sbasedon0 \snext17 BodyText;}
+{\s18\widctlpar\fs22\cgrid \sbasedon0 \snext18 DenseText;}
+{\s28\widctlpar\tqc\tx4320\tqr\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext28 header;}
+{\s29\widctlpar\tqc\tx4320\tqr\tx8640\qr\adjustright \fs20\cgrid \sbasedon0 \snext29 footer;}
+{\s30\li360\sa60\sb120\keepn\widctlpar\adjustright \b\f1\fs20\cgrid \sbasedon0 \snext30 GroupHeader;}
+{\s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext41 Code Example 0;}
+{\s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext42 Code Example 1;}
+{\s42\li720\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext43 Code Example 2;}
+{\s43\li1080\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext44 Code Example 3;}
+{\s44\li1440\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext45 Code Example 4;}
+{\s45\li1800\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext46 Code Example 5;}
+{\s46\li2160\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext47 Code Example 6;}
+{\s47\li2520\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext48 Code Example 7;}
+{\s48\li2880\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext49 Code Example 8;}
+{\s49\li3240\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext50 Code Example 9;}
+{\s50\li3600\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext51 Code Example 10;}
+{\s51\li3960\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext52 Code Example 11;}
+{\s52\li4320\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext53 Code Example 12;}
+{\s53\li4680\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid \sbasedon0 \snext53 Code Example 13;}
+{\s60\li0\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext61 List Continue 0;}
+{\s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext62 List Continue 1;}
+{\s62\li720\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext63 List Continue 2;}
+{\s63\li1080\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext64 List Continue 3;}
+{\s64\li1440\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext65 List Continue 4;}
+{\s65\li1800\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext66 List Continue 5;}
+{\s66\li2160\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext67 List Continue 6;}
+{\s67\li2520\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext68 List Continue 7;}
+{\s68\li2880\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext69 List Continue 8;}
+{\s69\li3240\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext70 List Continue 9;}
+{\s70\li3600\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext71 List Continue 10;}
+{\s71\li3960\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext72 List Continue 11;}
+{\s72\li4320\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext73 List Continue 12;}
+{\s73\li4680\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid \sbasedon0 \snext73 List Continue 13;}
+{\s80\li0\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext81 DescContinue 0;}
+{\s81\li360\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext82 DescContinue 1;}
+{\s82\li720\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext83 DescContinue 2;}
+{\s83\li1080\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext84 DescContinue 3;}
+{\s84\li1440\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext85 DescContinue 4;}
+{\s85\li1800\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext86 DescContinue 5;}
+{\s86\li2160\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext87 DescContinue 6;}
+{\s87\li2520\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext88 DescContinue 7;}
+{\s88\li2880\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext89 DescContinue 8;}
+{\s89\li3240\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext90 DescContinue 9;}
+{\s90\li3600\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext91 DescContinue 10;}
+{\s91\li3960\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext92 DescContinue 11;}
+{\s92\li4320\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext93 DescContinue 12;}
+{\s93\li4680\widctlpar\ql\adjustright \fs20\cgrid \sbasedon0 \snext93 DescContinue 13;}
+{\s100\li0\sa30\sb30\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext101 LatexTOC 0;}
+{\s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext102 LatexTOC 1;}
+{\s102\li720\sa24\sb24\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext103 LatexTOC 2;}
+{\s103\li1080\sa21\sb21\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext104 LatexTOC 3;}
+{\s104\li1440\sa18\sb18\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext105 LatexTOC 4;}
+{\s105\li1800\sa15\sb15\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext106 LatexTOC 5;}
+{\s106\li2160\sa12\sb12\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext107 LatexTOC 6;}
+{\s107\li2520\sa9\sb9\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext108 LatexTOC 7;}
+{\s108\li2880\sa6\sb6\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext109 LatexTOC 8;}
+{\s109\li3240\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext110 LatexTOC 9;}
+{\s110\li3600\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext111 LatexTOC 10;}
+{\s111\li3960\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext112 LatexTOC 11;}
+{\s112\li4320\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext113 LatexTOC 12;}
+{\s113\li4680\sa3\sb3\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid \sbasedon0 \snext113 LatexTOC 13;}
+{\s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext121 \sautoupd List Bullet 0;}
+{\s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext122 \sautoupd List Bullet 1;}
+{\s122\fi-360\li1080\widctlpar\jclisttab\tx1080{\*\pn \pnlvlbody\ilvl0\ls3\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext123 \sautoupd List Bullet 2;}
+{\s123\fi-360\li1440\widctlpar\jclisttab\tx1440{\*\pn \pnlvlbody\ilvl0\ls4\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext124 \sautoupd List Bullet 3;}
+{\s124\fi-360\li1800\widctlpar\jclisttab\tx1800{\*\pn \pnlvlbody\ilvl0\ls5\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext125 \sautoupd List Bullet 4;}
+{\s125\fi-360\li2160\widctlpar\jclisttab\tx2160{\*\pn \pnlvlbody\ilvl0\ls6\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext126 \sautoupd List Bullet 5;}
+{\s126\fi-360\li2520\widctlpar\jclisttab\tx2520{\*\pn \pnlvlbody\ilvl0\ls7\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext127 \sautoupd List Bullet 6;}
+{\s127\fi-360\li2880\widctlpar\jclisttab\tx2880{\*\pn \pnlvlbody\ilvl0\ls8\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext128 \sautoupd List Bullet 7;}
+{\s128\fi-360\li3240\widctlpar\jclisttab\tx3240{\*\pn \pnlvlbody\ilvl0\ls9\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext129 \sautoupd List Bullet 8;}
+{\s129\fi-360\li3600\widctlpar\jclisttab\tx3600{\*\pn \pnlvlbody\ilvl0\ls10\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext130 \sautoupd List Bullet 9;}
+{\s130\fi-360\li3960\widctlpar\jclisttab\tx3960{\*\pn \pnlvlbody\ilvl0\ls11\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext131 \sautoupd List Bullet 10;}
+{\s131\fi-360\li4320\widctlpar\jclisttab\tx4320{\*\pn \pnlvlbody\ilvl0\ls12\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext132 \sautoupd List Bullet 11;}
+{\s132\fi-360\li4680\widctlpar\jclisttab\tx4680{\*\pn \pnlvlbody\ilvl0\ls13\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext133 \sautoupd List Bullet 12;}
+{\s133\fi-360\li5040\widctlpar\jclisttab\tx5040{\*\pn \pnlvlbody\ilvl0\ls14\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid \sbasedon0 \snext133 \sautoupd List Bullet 13;}
+{\s140\fi-360\li360\widctlpar\fs20\cgrid \sbasedon0 \snext141 \sautoupd List Enum 0;}
+{\s141\fi-360\li720\widctlpar\fs20\cgrid \sbasedon0 \snext142 \sautoupd List Enum 1;}
+{\s142\fi-360\li1080\widctlpar\fs20\cgrid \sbasedon0 \snext143 \sautoupd List Enum 2;}
+{\s143\fi-360\li1440\widctlpar\fs20\cgrid \sbasedon0 \snext144 \sautoupd List Enum 3;}
+{\s144\fi-360\li1800\widctlpar\fs20\cgrid \sbasedon0 \snext145 \sautoupd List Enum 4;}
+{\s145\fi-360\li2160\widctlpar\fs20\cgrid \sbasedon0 \snext146 \sautoupd List Enum 5;}
+{\s146\fi-360\li2520\widctlpar\fs20\cgrid \sbasedon0 \snext147 \sautoupd List Enum 6;}
+{\s147\fi-360\li2880\widctlpar\fs20\cgrid \sbasedon0 \snext148 \sautoupd List Enum 7;}
+{\s148\fi-360\li3240\widctlpar\fs20\cgrid \sbasedon0 \snext149 \sautoupd List Enum 8;}
+{\s149\fi-360\li3600\widctlpar\fs20\cgrid \sbasedon0 \snext150 \sautoupd List Enum 9;}
+{\s150\fi-360\li3960\widctlpar\fs20\cgrid \sbasedon0 \snext151 \sautoupd List Enum 10;}
+{\s151\fi-360\li4320\widctlpar\fs20\cgrid \sbasedon0 \snext152 \sautoupd List Enum 11;}
+{\s152\fi-360\li4680\widctlpar\fs20\cgrid \sbasedon0 \snext153 \sautoupd List Enum 12;}
+{\s153\fi-360\li5040\widctlpar\fs20\cgrid \sbasedon0 \snext153 \sautoupd List Enum 13;}
+}
+{\info 
+{\title {\comment fescape  {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+1.1 \par
+}}fescape}
+{\comment Generated by doxygen 1.10.0.}
+}\pard\plain 
+\sectd\pgnlcrm
+{\footer \s29\widctlpar\tqc\tx4320\tqr\tx8640\qr\adjustright \fs20\cgrid {\chpgn}}
+\pard\plain \s16\qc\sa60\widctlpar\outlinelevel1\adjustright \f1\cgrid 
+\vertalc\qc\par\par\par\par\par\par\par
+\pard\plain \s15\qc\sb240\sa60\widctlpar\outlinelevel0\adjustright \b\f1\fs32\kerning28\cgrid 
+{\field\fldedit {\*\fldinst TITLE \\*MERGEFORMAT}{\fldrslt fescape}}\par
+\pard\plain \s16\qc\sa60\widctlpar\outlinelevel1\adjustright \f1\cgrid 
+\par
+\par\par\par\par\par\par\par\par\par\par\par\par
+\pard\plain \s16\qc\sa60\widctlpar\outlinelevel1\adjustright \f1\cgrid 
+{\field\fldedit {\*\fldinst AUTHOR \\*MERGEFORMAT}{\fldrslt AUTHOR}}\par
+Version 1.1\par\page\page\vertalt
+\pard\plain 
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid Table of Contents\par
+\pard\plain \par
+{\field\fldedit {\*\fldinst TOC \\f \\*MERGEFORMAT}{\fldrslt Table of contents}}\par
+\pard\plain 
+\sect \sbkpage \pgndec \pgnrestart
+\sect \sectd \sbknone
+{\footer \s29\widctlpar\tqc\tx4320\tqr\tx8640\qr\adjustright \fs20\cgrid {\chpgn}}
+
+\pard\plain \sect\sbkpage
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid 
+File Index\par \pard\plain 
+{\tc \v File Index}
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+File List\par \pard\plain 
+{
+\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid Here is a list of all documented files with brief descriptions:}
+{
+\par
+\pard\plain \s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
+{\b src/{\b actions.h} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAA \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b src/{\b fescape.c} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAB \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b src/{\b fescape.h} ({\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Filter unprintable characters from input stream })} \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAG \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b src/{\b main.c} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAD \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b src/{\b system-actions.c} } \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAE \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+{\b src/{\b system-actions.h} ({\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Common functions and system actions })} \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAJ \\*MERGEFORMAT}{\fldrslt pagenum}}
+\par
+\par}
+\pard\plain \sect\sbkpage
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid 
+File Documentation{\tc \v File Documentation}
+\par \pard\plain 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+actions.h\par \pard\plain 
+{\tc\tcl2 \v src/actions.h}
+{\xe \v src/actions.h}
+{\bkmkstart AAAAAAAAAA}
+{\bkmkend AAAAAAAAAA}
+{
+\pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 {\cf21 #ifndef ACTIONS_H}\par
+00002 {\cf21 #define ACTIONS_H}\par
+00003 \par
+00008 {\cf17 typedef} {\cf17 enum} \{\par
+00009     ACTION_PREP,\par
+00010     ACTION_RESTORE,\par
+00011     ACTION_ADD,\par
+00012     ACTION_FLUSH,\par
+00013     ACTION_INVALID\par
+00014 \} Action;\par
+00015 \par
+00016 {\cf21 #endif }{\cf20 /* ACTIONS_H */}{\cf21 }\par
+}
+\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+fescape.c\par \pard\plain 
+{\tc\tcl2 \v src/fescape.c}
+{\xe \v src/fescape.c}
+{\bkmkstart AAAAAAAAAB}
+{\bkmkend AAAAAAAAAB}
+{
+\pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 {\cf21 #include "fescape.h"}\par
+00002 {\cf21 #include "system-actions.h"}\par
+00003 \par
+00004 {\cf18 void} usage({\cf17 const} {\cf18 char} *program) \{\par
+00005     printf({\cf22 "Usage: %s [OPTIONS] <ARGUMENTS>\\n\\n"}, program);\par
+00006     printf({\cf22 "Options:\\n"});\par
+00007     printf({\cf22 "  -h, --help        Display this help message and exit\\n"});\par
+00008     printf({\cf22 "  -r, --repeats     Show repeated non-ASCII chars in brackets\\n"});\par
+00009     printf({\cf22 "  -n, --newline     Do not filter newline characters\\n"}); \par
+00010     printf({\cf22 "  -o, --octal       Display non-ASCII characters in octal instead of hex\\n\\n"});\par
+00011     printf({\cf22 "Arguments:\\n"});\par
+00012     printf({\cf22 "  filename(s)       filename(s) to display\\n"});\par
+00013     printf({\cf22 "  -                 streams from stdin\\n"});\par
+00014     printf({\cf22 "  no argument       equivalent to -, streams from stdin\\n\\n"});\par
+00015     printf({\cf22 "Examples:\\n"});\par
+00016     printf({\cf22 "  %s\\n"}, program);\par
+00017     printf({\cf22 "  %s -\\n"}, program);\par
+00018     printf({\cf22 "  %s MyBinaryFile\\n"}, program);\par
+00019     printf({\cf22 "  %s File1 MyBinaryFile2 File3\\n\\n"}, program);\par
+00020     {\cf20 // printf("Restrictions:\\n");}\par
+00021     {\cf20 // printf("  None.\\n\\n");}\par
+00022     {\cf20 // printf("Notes:\\n");}\par
+00023     {\cf20 // printf("  None.\\n");}\par
+00024     exit(EXIT_SUCCESS);\par
+00025 \} {\cf20 // usage()}\par
+00026 \par
+00027 {\cf18 void} fescape(FILE *input_stream, FILE *output_stream, {\cf18 bool} repeats, {\cf18 bool} octal, {\cf18 bool} filter_newlines) \{\par
+00028     {\cf18 int} current_char;\par
+00029     {\cf18 int} saved_char = EOF;\par
+00030     {\cf18 int} repeat_count = 1;\par
+00031 \par
+00032     {\cf19 while} ((current_char = getc(input_stream)) != EOF) \{\par
+00033         {\cf19 if} (ferror(input_stream)) \{\par
+00034             fclose(input_stream);\par
+00035             HANDLE_ERROR({\cf22 "unable to read input stream"});\par
+00036         \}\par
+00037 \par
+00038         {\cf20 // Handle newlines separately when not filtering them}\par
+00039         {\cf19 if} (!filter_newlines && current_char == {\cf23 '\\n'}) \{\par
+00040             {\cf19 if} (repeat_count > 1 && repeats && saved_char != {\cf23 '\\n'}) \{\par
+00041                 fprintf(output_stream, {\cf22 "[%i]"}, repeat_count);\par
+00042                 repeat_count = 1;\par
+00043             \}\par
+00044             putc(current_char, output_stream);\par
+00045             saved_char = current_char;\par
+00046             {\cf19 continue}; \par
+00047         \}\par
+00048 \par
+00049         {\cf19 if} (iscntrl(current_char) || !isprint(current_char)) \{\par
+00050             {\cf19 if} (current_char == saved_char && repeats) \{\par
+00051                 repeat_count++;\par
+00052             \} {\cf19 else} \{\par
+00053                 {\cf19 if} (repeat_count > 1 && repeats) \{ \par
+00054                     fprintf(output_stream, {\cf22 "[%i]"}, repeat_count);\par
+00055                     repeat_count = 1;\par
+00056                 \}\par
+00057                 saved_char = current_char;\par
+00058                 {\cf19 if} (current_char != {\cf23 '\\n'} || filter_newlines) \{\par
+00059                     fprintf(output_stream, octal ? {\cf22 "<%.3o>"} : {\cf22 "<0x%02x>"}, current_char);\par
+00060                 \}\par
+00061             \}\par
+00062         \} {\cf19 else} \{\par
+00063             {\cf19 if} (repeat_count > 1 && repeats) \{ {\cf20 // Final repeat count for control sequences}\par
+00064                 fprintf(output_stream, {\cf22 "[%i]"}, repeat_count);\par
+00065                 repeat_count = 1;\par
+00066             \}\par
+00067             putc(current_char, output_stream); \par
+00068             saved_char = EOF; \par
+00069         \}\par
+00070     \}\par
+00071     {\cf20 // Handle the case for the last character being repeated}\par
+00072     {\cf19 if} (repeat_count > 1 && repeats && saved_char != {\cf23 '\\n'}) \{ \par
+00073         fprintf(output_stream, {\cf22 "[%i]"}, repeat_count);\par
+00074     \}\par
+00075 \}\par
+}
+\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+src/fescape.h File Reference\par \pard\plain 
+{\tc\tcl2 \v src/fescape.h}
+{\xe \v src/fescape.h}
+{\bkmkstart AAAAAAAAAG}
+{\bkmkend AAAAAAAAAG}
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Filter unprintable characters from input stream. }}\par
+{
+\pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include <ctype.h>}\par
+{\f2 #include <stdio.h>}\par
+{\f2 #include <stdbool.h>}\par
+{\f2 #include <stdlib.h>}\par
+{\f2 #include <string.h>}\par
+{\f2 #include <unistd.h>}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+void {\b usage} (const char *program)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Display help to user. }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+void {\b fescape} (FILE *input_stream, FILE *output_stream, bool repeats, bool octal, bool filter_newlines)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+convert non-ASCII characters to hex or octal representation }{
+}\par
+}\par}
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Detailed Description\par
+\pard\plain 
+{
+\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Filter unprintable characters from input stream. \par
+}{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\par
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Author\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+Robert Primmer ({\f2 https://github.com/rprimmer})\par
+}}Files that contain non-printable characters mess up the display when printed (e.g., via cat(1)). This program allows the display of such files, substituting hex (or optionally octal) codes for the non-printable characters. Optionally it can show the count for repeated non-printable characters rather than display each repeated hex/octal code.\par
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Version\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+1.1 \par
+}}{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Date\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+2024-03-30 \par
+}}}{
+Definition in file {\b fescape.h}.}\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Function Documentation\par
+\pard\plain 
+{\xe \v fescape\:fescape.h}
+{\xe \v fescape.h\:fescape}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+void fescape (FILE *  {\i input_stream}, FILE *  {\i output_stream}, bool  {\i repeats}, bool  {\i octal}, bool  {\i filter_newlines})}}
+\par
+{\bkmkstart AAAAAAAAAH}
+{\bkmkend AAAAAAAAAH}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+convert non-ASCII characters to hex or octal representation }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i input_stream} \cell }{Input stream to read. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i output_stream} \cell }{Output stream to write. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i repeats} \cell }{If true, display repeated character count. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i octal} \cell }{If true, display control sequences in octal instead of hex. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i filter_newlines} \cell }{If false, do not filter out newline characters. \cell }
+{\row }
+}
+}{
+Definition at line {\b 27} of file {\b fescape.c}.}\par
+}
+{\xe \v usage\:fescape.h}
+{\xe \v fescape.h\:usage}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+void usage (const char *  {\i program})}}
+\par
+{\bkmkstart AAAAAAAAAI}
+{\bkmkend AAAAAAAAAI}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Display help to user. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i program} \cell }{Calling program name \cell }
+{\row }
+}
+}{
+Definition at line {\b 4} of file {\b fescape.c}.}\par
+}
+\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+fescape.h\par \pard\plain 
+{\tc\tcl2 \v src/fescape.h}
+{\xe \v src/fescape.h}
+{\bkmkstart AAAAAAAAAC}
+{\bkmkend AAAAAAAAAC}
+Go to the documentation of this file.\par
+{
+\pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 \par
+00014 {\cf21 #pragma once }\par
+00015 \par
+00016 {\cf21 #include <ctype.h>}\par
+00017 {\cf21 #include <stdio.h>} \par
+00018 {\cf21 #include <stdbool.h>}\par
+00019 {\cf21 #include <stdlib.h>}\par
+00020 {\cf21 #include <string.h>}\par
+00021 {\cf21 #include <unistd.h>}\par
+00022 \par
+00028 {\cf18 void} usage({\cf17 const} {\cf18 char} *program); \par
+00029 \par
+00039 {\cf18 void} fescape(FILE *input_stream, FILE *output_stream, {\cf18 bool} repeats, {\cf18 bool} octal, {\cf18 bool} filter_newlines);\par
+}
+\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+main.c\par \pard\plain 
+{\tc\tcl2 \v src/main.c}
+{\xe \v src/main.c}
+{\bkmkstart AAAAAAAAAD}
+{\bkmkend AAAAAAAAAD}
+{
+\pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 {\cf21 #include <getopt.h>}\par
+00002 {\cf21 #include <libgen.h>}\par
+00003 {\cf21 #include <stdbool.h>}\par
+00004 {\cf21 #include <stdio.h>}\par
+00005 {\cf21 #include <stdlib.h>}\par
+00006 {\cf21 #include <string.h>}\par
+00007 {\cf21 #include <unistd.h>}\par
+00008 \par
+00009 {\cf21 #include "fescape.h"}\par
+00010 {\cf21 #include "system-actions.h"}\par
+00011 \par
+00012 {\cf18 int} main({\cf18 int} argc, {\cf18 char} **argv) \{\par
+00013     {\cf18 char} program[PATH_MAX];\par
+00014     basename_r(argv[0], program); \par
+00015     FILE *fp; \par
+00016     {\cf18 bool} repeat_count = {\cf17 false}; \par
+00017     {\cf18 bool} show_octal = {\cf17 false};\par
+00018     {\cf18 bool} filter_newlines = {\cf17 true};\par
+00019 \par
+00020 {\cf21 #ifdef DEBUG}\par
+00021     fprintf(stderr, {\cf22 "%s, %d: argc: %d, optind: %d\\n"}, basename(__FILE__), __LINE__, argc, optind);\par
+00022 {\cf21 #endif }{\cf20 // DEBUG}\par
+00023 \par
+00024     {\cf20 // Handle switches}\par
+00025     {\cf18 int} option = 0;\par
+00026     {\cf18 int} option_index = 0;\par
+00027     {\cf17 static} {\cf17 struct }option long_options[] = \{\{{\cf22 "help"}, no_argument, 0, {\cf23 'h'}\},\par
+00028                                            \{{\cf22 "repeats"}, no_argument, 0, {\cf23 'r'}\},\par
+00029                                            \{{\cf22 "newline"}, no_argument, 0, {\cf23 'n'}\},\par
+00030                                            \{{\cf22 "octal"}, no_argument, 0, {\cf23 'o'}\},\par
+00031                                            \{0, 0, 0, 0\}\};\par
+00032     {\cf19 while} ((option = getopt_long(argc, argv, {\cf22 "hrno"}, long_options, &option_index)) != -1) \{\par
+00033         {\cf19 switch} (option) \{\par
+00034         {\cf19 case} {\cf23 'h'}:\par
+00035             usage(program);\par
+00036             {\cf19 break};\par
+00037         {\cf19 case} {\cf23 'r'}:\par
+00038             repeat_count = {\cf17 true};\par
+00039             {\cf19 break};\par
+00040         {\cf19 case} {\cf23 'n'}:\par
+00041             filter_newlines = {\cf17 false};\par
+00042             {\cf19 break};\par
+00043         {\cf19 case} {\cf23 'o'}:\par
+00044             show_octal = {\cf17 true};\par
+00045             {\cf19 break};\par
+00046         {\cf19 default}:\par
+00047             HANDLE_ERROR({\cf22 "invalid switch provided"});\par
+00048         \}\par
+00049     \}\par
+00050 \par
+00051 {\cf21 #ifdef DEBUG}\par
+00052     fprintf(stderr, {\cf22 "%s, %d: argc: %d, optind: %d\\n"}, basename(__FILE__), __LINE__, argc, optind);\par
+00053 {\cf21 #endif }{\cf20 // DEBUG}\par
+00054 \par
+00055     {\cf20 // Handle arguments and actions}\par
+00056     {\cf18 int} retval = 0;\par
+00057 \par
+00058     {\cf19 if} (optind >= argc)\par
+00059         fescape(stdin, stdout, repeat_count, show_octal, filter_newlines);\par
+00060     {\cf19 else}\par
+00061         {\cf19 for} (; optind < argc; optind++) \{\par
+00062             {\cf19 if} (strcmp(argv[optind], {\cf22 "-"}) == 0)\par
+00063                 fescape(stdin, stdout, repeat_count, show_octal, filter_newlines);\par
+00064             {\cf19 else} \{\par
+00065                 {\cf19 if} ((fp = fopen(argv[optind], {\cf22 "r"})) == NULL) \par
+00066                     HANDLE_ERROR({\cf22 "cannot open file: %s"}, argv[optind]);\par
+00067 \par
+00068                 fescape(fp, stdout, repeat_count, show_octal, filter_newlines);\par
+00069                 fprintf(stdout, {\cf22 "\\n"});\par
+00070                 fclose(fp);\par
+00071             \} \par
+00072         \} \par
+00073 \par
+00074     {\cf19 return} ferror(stdout) ? EOF : retval;\par
+00075 \} \par
+}
+\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+system-actions.c\par \pard\plain 
+{\tc\tcl2 \v src/system-actions.c}
+{\xe \v src/system-actions.c}
+{\bkmkstart AAAAAAAAAE}
+{\bkmkend AAAAAAAAAE}
+{
+\pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 {\cf20 // system-actions.c}\par
+00002 \par
+00003 {\cf21 #include "system-actions.h"}\par
+00004 \par
+00005 {\cf18 void} handleError({\cf18 bool} fatal, {\cf18 char} *file, {\cf17 const} {\cf18 char} *func, {\cf18 int} line, {\cf17 const} {\cf18 char} *fmt, ...) \{\par
+00006     fprintf(stderr, {\cf22 "Error in %s:%s, line %d: "}, basename(file), func, line);\par
+00007     va_list args;\par
+00008     va_start(args, fmt);\par
+00009     vfprintf(stderr, fmt, args);\par
+00010     va_end(args);\par
+00011     fprintf(stderr, {\cf22 "\\n"});\par
+00012 \par
+00013     {\cf19 if} (fatal) \par
+00014         exit(EXIT_FAILURE);\par
+00015 \}\par
+00016 \par
+00017 {\cf18 int} booleanQuery({\cf17 const} {\cf18 char} *prompt) \{\par
+00018     {\cf18 char} response[10];\par
+00019 \par
+00020     printf({\cf22 "%s "}, prompt);\par
+00021 \par
+00022     {\cf19 if} (fgets(response, {\cf17 sizeof}(response), stdin) == NULL)\par
+00023         HANDLE_ERROR({\cf22 "failed to read user response"}); \par
+00024 \par
+00025     {\cf20 // Empty newline interpreted as non-yes answer }\par
+00026     {\cf19 if} (response[0] == {\cf23 '\\n'})     \par
+00027         {\cf19 return} 0;\par
+00028 \par
+00029     {\cf19 return} (response[0] == {\cf23 'y'} || response[0] == {\cf23 'Y'});\par
+00030 \} {\cf20 // booleanQuery()}\par
+00031 \par
+00032 {\cf18 int} fileExists({\cf17 const} {\cf18 char} *filename) \{\par
+00033     {\cf17 struct }stat buffer;\par
+00034     {\cf19 return} (stat(filename, &buffer) == 0);\par
+00035 \} {\cf20 // fileExists()}\par
+00036 \par
+00037 {\cf18 int} copyFile({\cf17 const} {\cf18 char} *src, {\cf17 const} {\cf18 char} *dest) \{\par
+00038     {\cf18 char} buffer[BUFSIZ];\par
+00039     {\cf18 size_t} bytesRead, bytesWritten; \par
+00040 \par
+00041     FILE *source = fopen(src, {\cf22 "rb"});\par
+00042     {\cf19 if} (source == NULL) \par
+00043         HANDLE_ERROR({\cf22 "error opening source file %s"}, src); \par
+00044 \par
+00045     FILE *destination = fopen(dest, {\cf22 "wb"});\par
+00046     {\cf19 if} (destination == NULL) \{\par
+00047         fclose(source);\par
+00048         HANDLE_ERROR({\cf22 "error opening destination file: %s"}, dest); \par
+00049     \}\par
+00050 \par
+00051     {\cf19 while} ((bytesRead = fread(buffer, 1, {\cf17 sizeof}(buffer), source)) > 0) \{\par
+00052         bytesWritten = fwrite(buffer, 1, bytesRead, destination);\par
+00053         {\cf19 if} (bytesWritten < bytesRead) \{\par
+00054             fclose(source);\par
+00055             fclose(destination);\par
+00056             HANDLE_ERROR({\cf22 "write error on destination file: %s"}, dest);\par
+00057         \}\par
+00058     \}\par
+00059 \par
+00060     {\cf19 if} (ferror(source)) \{\par
+00061         fclose(source);\par
+00062         fclose(destination);\par
+00063         HANDLE_ERROR({\cf22 "read error: %s"}, src);\par
+00064     \} {\cf19 else} {\cf19 if} (!feof(source)) \{\par
+00065         fclose(source);\par
+00066         fclose(destination);\par
+00067         HANDLE_ERROR({\cf22 "unexpected end of file: %s"}, src);\par
+00068     \}\par
+00069 \par
+00070     fclose(source);\par
+00071     fclose(destination);\par
+00072 \par
+00073     {\cf19 return} EXIT_SUCCESS;\par
+00074 \} {\cf20 // copyFile()}\par
+00075 \par
+00076 {\cf18 int} copyFile2({\cf17 const} {\cf18 char} *src, {\cf17 const} {\cf18 char} *dest) \{\par
+00077     {\cf18 char} buffer[BUFSIZ];\par
+00078     ssize_t bytes_read, bytes_written, total_written;\par
+00079 \par
+00080     {\cf18 int} source_fd = open(src, O_RDONLY);\par
+00081     {\cf19 if} (source_fd == -1) \par
+00082         HANDLE_ERROR({\cf22 "failed to open source file: %s"}, src);\par
+00083 \par
+00084     {\cf18 int} dest_fd = open(dest, O_WRONLY | O_CREAT | O_TRUNC, 0644);\par
+00085     {\cf19 if} (dest_fd == -1) \{\par
+00086         close(source_fd);\par
+00087         HANDLE_ERROR({\cf22 "failed to create destination file: %s"}, dest);\par
+00088     \}\par
+00089 \par
+00090     {\cf19 while} ((bytes_read = read(source_fd, buffer, {\cf17 sizeof}(buffer))) > 0) \{\par
+00091         total_written = 0;\par
+00092         {\cf19 do} \{\par
+00093             bytes_written = write(dest_fd, buffer + total_written, bytes_read - total_written);\par
+00094             {\cf19 if} (bytes_written >= 0) \{\par
+00095                 total_written += bytes_written;\par
+00096             \} {\cf19 else} \{\par
+00097                 close(source_fd);\par
+00098                 close(dest_fd);\par
+00099                 HANDLE_ERROR({\cf22 "write error: %s"}, dest);\par
+00100             \}\par
+00101         \} {\cf19 while} (bytes_read > total_written);\par
+00102     \}\par
+00103 \par
+00104     {\cf19 if} (bytes_read == -1) \{\par
+00105         close(source_fd);\par
+00106         close(dest_fd);\par
+00107         HANDLE_ERROR({\cf22 "read error: %s"}, src);\par
+00108     \}\par
+00109 \par
+00110     close(source_fd);\par
+00111     close(dest_fd);\par
+00112 \par
+00113     {\cf19 return} EXIT_SUCCESS;\par
+00114 \} {\cf20 // copyFile2()}\par
+00115 \par
+00116 {\cf18 int} lsFiles({\cf17 const} {\cf18 char} *dirname, {\cf17 const} {\cf18 char} *files) \{ \par
+00117     DIR *dir = opendir(dirname);\par
+00118 \par
+00119     {\cf19 if} (dir == NULL) \{\par
+00120         perror({\cf22 "opendir"}); \par
+00121         {\cf19 return} EXIT_FAILURE; \par
+00122     \}\par
+00123 \par
+00124     {\cf17 struct }dirent *entry;\par
+00125     {\cf17 struct }stat file_stat;\par
+00126     {\cf18 char} full_path[PATH_MAX];\par
+00127 \par
+00128     {\cf19 while} ((entry = readdir(dir)) != NULL) \{\par
+00129         {\cf19 if} (fnmatch(files, entry->d_name, 0) == 0) \{\par
+00130             \par
+00131             {\cf19 if} (dirname[strlen(dirname) - 1] == {\cf23 '/'}) \par
+00132                 snprintf(full_path, {\cf17 sizeof}(full_path), {\cf22 "%s%s"}, dirname, entry->d_name);\par
+00133             {\cf19 else} \par
+00134                 snprintf(full_path, {\cf17 sizeof}(full_path), {\cf22 "%s/%s"}, dirname, entry->d_name);\par
+00135 \par
+00136             {\cf19 if} (lstat(full_path, &file_stat) == 0) \{\par
+00137                 printf({\cf22 "%s "}, full_path);\par
+00138                 printf({\cf22 "Owner: %s "}, getpwuid(file_stat.st_uid)->pw_name);\par
+00139                 printf({\cf22 "Group: %s "}, getgrgid(file_stat.st_gid)->gr_name);\par
+00140                 printf({\cf22 "Size: %lld "}, ({\cf18 long} {\cf18 long})file_stat.st_size);\par
+00141                 printf({\cf22 "Last modified: %s"}, ctime(&file_stat.st_mtime));\par
+00142             \} {\cf19 else} \{\par
+00143                 REPORT_ERROR({\cf22 "lstat: %s"}, strerror(errno));\par
+00144                 closedir(dir); \par
+00145                 {\cf19 return} EXIT_FAILURE;\par
+00146             \}\par
+00147         \}\par
+00148     \}\par
+00149 \par
+00150     {\cf19 return} (closedir(dir)); \par
+00151 \} {\cf20 // lsFiles()}\par
+00152 \par
+00153 {\cf18 int} fileInfo({\cf17 const} {\cf18 char} *filepath) \{\par
+00154     {\cf17 struct }stat fileStat;\par
+00155     {\cf19 if} (lstat(filepath, &fileStat) < 0) \par
+00156         HANDLE_ERROR({\cf22 "lstat: %s"}, strerror(errno));\par
+00157 \par
+00158     printf({\cf22 "Information for %s\\n"}, filepath);\par
+00159     printf({\cf22 "---------------------------\\n"});\par
+00160     printf({\cf22 "File Size: \\t\\t%lld bytes\\n"}, ({\cf18 long} {\cf18 long})fileStat.st_size);\par
+00161     printf({\cf22 "Number of Links: \\t%lu\\n"}, ({\cf18 unsigned} {\cf18 long})fileStat.st_nlink);\par
+00162     printf({\cf22 "File inode: \\t\\t%lu\\n"}, ({\cf18 unsigned} {\cf18 long})fileStat.st_ino);\par
+00163 \par
+00164     printf({\cf22 "File Permissions: \\t"});\par
+00165     printf((S_ISDIR(fileStat.st_mode)) ? {\cf22 "d"} : (S_ISLNK(fileStat.st_mode)) ? {\cf22 "l"} : (S_ISFIFO(fileStat.st_mode)) ? {\cf22 "p"} :\par
+00166            (S_ISSOCK(fileStat.st_mode)) ? {\cf22 "s"} : (S_ISCHR(fileStat.st_mode)) ? {\cf22 "c"} : (S_ISBLK(fileStat.st_mode)) ? {\cf22 "b"} : {\cf22 "-"});\par
+00167     printf((fileStat.st_mode & S_IRUSR) ? {\cf22 "r"} : {\cf22 "-"});\par
+00168     printf((fileStat.st_mode & S_IWUSR) ? {\cf22 "w"} : {\cf22 "-"});\par
+00169     printf((fileStat.st_mode & S_IXUSR) ? ((fileStat.st_mode & S_ISUID) ? {\cf22 "s"} : {\cf22 "x"}) : \par
+00170            ((fileStat.st_mode & S_ISUID) ? {\cf22 "S"} : {\cf22 "-"}));\par
+00171     printf((fileStat.st_mode & S_IRGRP) ? {\cf22 "r"} : {\cf22 "-"});\par
+00172     printf((fileStat.st_mode & S_IWGRP) ? {\cf22 "w"} : {\cf22 "-"});\par
+00173     printf((fileStat.st_mode & S_IXGRP) ? ((fileStat.st_mode & S_ISGID) ? {\cf22 "s"} : {\cf22 "x"}) :\par
+00174            ((fileStat.st_mode & S_ISGID) ? {\cf22 "S"} : {\cf22 "-"}));\par
+00175     printf((fileStat.st_mode & S_IROTH) ? {\cf22 "r"} : {\cf22 "-"});\par
+00176     printf((fileStat.st_mode & S_IWOTH) ? {\cf22 "w"} : {\cf22 "-"});\par
+00177     printf((fileStat.st_mode & S_IXOTH) ? ((fileStat.st_mode & S_ISVTX) ? {\cf22 "t"} : {\cf22 "x"}) :\par
+00178            ((fileStat.st_mode & S_ISVTX) ? {\cf22 "T"} : {\cf22 "-"}));\par
+00179     printf({\cf22 "\\n"});\par
+00180 \par
+00181     printf({\cf22 "Last access time: \\t%s"}, ctime(&fileStat.st_atime));\par
+00182     printf({\cf22 "Last modification time: %s"}, ctime(&fileStat.st_mtime));\par
+00183     printf({\cf22 "Last status change time: %s"}, ctime(&fileStat.st_ctime));\par
+00184 \par
+00185     {\cf17 struct }passwd *pw = getpwuid(fileStat.st_uid);\par
+00186     {\cf17 struct }group *gr = getgrgid(fileStat.st_gid);\par
+00187     printf({\cf22 "File Owner: \\t\\t%s (%d)\\n"}, pw->pw_name, fileStat.st_uid);\par
+00188     printf({\cf22 "File Group: \\t\\t%s (%d)\\n"}, gr->gr_name, fileStat.st_gid);\par
+00189     printf({\cf22 "Block Size: \\t\\t%ld bytes\\n"}, ({\cf18 long})fileStat.st_blksize);\par
+00190 \par
+00191     printf({\cf22 "File Type: \\t\\t"});\par
+00192     {\cf19 if} (S_ISREG(fileStat.st_mode))\par
+00193         printf({\cf22 "Regular file\\n"});\par
+00194     {\cf19 else} {\cf19 if} (S_ISDIR(fileStat.st_mode))\par
+00195         printf({\cf22 "Directory\\n"});\par
+00196     {\cf19 else} {\cf19 if} (S_ISCHR(fileStat.st_mode))\par
+00197         printf({\cf22 "Character device\\n"});\par
+00198     {\cf19 else} {\cf19 if} (S_ISBLK(fileStat.st_mode))\par
+00199         printf({\cf22 "Block device\\n"});\par
+00200     {\cf19 else} {\cf19 if} (S_ISFIFO(fileStat.st_mode))\par
+00201         printf({\cf22 "FIFO\\n"});\par
+00202     {\cf19 else} {\cf19 if} (S_ISLNK(fileStat.st_mode))\par
+00203         printf({\cf22 "Symbolic link\\n"});\par
+00204     {\cf19 else} {\cf19 if} (S_ISSOCK(fileStat.st_mode))\par
+00205         printf({\cf22 "Socket\\n"});\par
+00206     {\cf19 else}\par
+00207         printf({\cf22 "Unknown\\n"});\par
+00208 \par
+00209     {\cf19 return} EXIT_SUCCESS; \par
+00210 \} {\cf20 // fileInfo()}\par
+00211 \par
+00212 {\cf18 int} checkProcess({\cf17 const} {\cf18 char} *process_name) \{\par
+00213     {\cf18 char} command[128];\par
+00214     snprintf(command, {\cf17 sizeof}(command), {\cf22 "pgrep %s"}, process_name);\par
+00215 \par
+00216     FILE *pipe = popen(command, {\cf22 "r"});\par
+00217     {\cf19 if} (pipe == NULL)\par
+00218         {\cf19 return} EXIT_FAILURE;\par
+00219 \par
+00220     {\cf18 char} buffer[256];\par
+00221     {\cf19 if} (fgets(buffer, {\cf17 sizeof}(buffer), pipe) == NULL)\par
+00222         fprintf(stderr, {\cf22 "Warning: the %s process is not running.\\n"}, process_name);\par
+00223     {\cf19 else} \{\par
+00224         pid_t pid = atoi(strtok(buffer, {\cf22 "\\n"})); {\cf20 // Extract first PID}\par
+00225         printf({\cf22 "The %s process is running with PID(s): %d"}, process_name, pid);\par
+00226 \par
+00227         {\cf20 // Check for additional PIDs}\par
+00228         {\cf19 while} (fgets(buffer, {\cf17 sizeof}(buffer), pipe) != NULL) \{\par
+00229             pid = atoi(strtok(buffer, {\cf22 "\\n"}));\par
+00230             printf({\cf22 " %d"}, pid);\par
+00231         \}\par
+00232         printf({\cf22 "\\n"});\par
+00233     \}\par
+00234 \par
+00235     {\cf19 return} (pclose(pipe)); \par
+00236 \} {\cf20 // checkProcess()}\par
+00237 \par
+00238 {\cf18 int} displayProcess({\cf17 const} {\cf18 char} *process_name) \{\par
+00239     {\cf18 char} command[128];\par
+00240     snprintf(command, {\cf17 sizeof}(command), {\cf22 "ps aux | grep %s | grep -v grep"}, process_name);\par
+00241 \par
+00242     FILE *pipe = popen(command, {\cf22 "r"});\par
+00243     {\cf19 if} (pipe == NULL)\par
+00244         {\cf19 return} EXIT_FAILURE; \par
+00245 \par
+00246     {\cf18 char} buffer[256];\par
+00247     {\cf19 while} (fgets(buffer, {\cf17 sizeof}(buffer), pipe) != NULL)\par
+00248         printf({\cf22 "%s"}, buffer);\par
+00249 \par
+00250     {\cf19 return} (pclose(pipe));\par
+00251 \} {\cf20 // displayProcess()}\par
+00252 \par
+00253 {\cf18 int} validateDNSname({\cf17 const} {\cf18 char} *dns_name) \{\par
+00254     regex_t regex;\par
+00255     {\cf18 int} result;\par
+00256     {\cf17 const} {\cf18 char} *dns_regex = {\cf22 "^([a-zA-Z0-9]([-a-zA-Z0-9]\{0,61\}[a-zA-Z0-9])?\\\\.)+[a-zA-Z]\{2,\}$"};\par
+00257 \par
+00258     {\cf20 // Compile the regular expression}\par
+00259     result = regcomp(&regex, dns_regex, REG_EXTENDED | REG_NOSUB);\par
+00260     {\cf19 if} (result) \par
+00261         HANDLE_ERROR({\cf22 "could not compile regex"}); \par
+00262 \par
+00263     {\cf20 // Execute the regular expression}\par
+00264     result = regexec(&regex, dns_name, 0, NULL, 0);\par
+00265     regfree(&regex); {\cf20 // Free memory allocated to the pattern buffer by regcomp}\par
+00266 \par
+00267     {\cf19 return} result; \par
+00268 \} {\cf20 // validateDNSname}\par
+}
+\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+src/system-actions.h File Reference\par \pard\plain 
+{\tc\tcl2 \v src/system-actions.h}
+{\xe \v src/system-actions.h}
+{\bkmkstart AAAAAAAAAJ}
+{\bkmkend AAAAAAAAAJ}
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Common functions and system actions. }}\par
+{
+\pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include <dirent.h>}\par
+{\f2 #include <errno.h>}\par
+{\f2 #include <fcntl.h>}\par
+{\f2 #include <fnmatch.h>}\par
+{\f2 #include <grp.h>}\par
+{\f2 #include <libgen.h>}\par
+{\f2 #include <limits.h>}\par
+{\f2 #include <pwd.h>}\par
+{\f2 #include <regex.h>}\par
+{\f2 #include <stdarg.h>}\par
+{\f2 #include <stdbool.h>}\par
+{\f2 #include <stdio.h>}\par
+{\f2 #include <stdlib.h>}\par
+{\f2 #include <string.h>}\par
+{\f2 #include <sys/stat.h>}\par
+{\f2 #include <sys/types.h>}\par
+{\f2 #include <sys/wait.h>}\par
+{\f2 #include <time.h>}\par
+{\f2 #include <unistd.h>}\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Macros\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+#define {\b HANDLE_ERROR}(fmt, ...)\~ handleError(true, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__)\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+#define {\b REPORT_ERROR}(fmt, ...)\~ handleError(false, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__)\par
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Functions\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+void {\b handleError} (bool fatal, char *file, const char *func, int line, const char *fmt,...)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Common error handling routine. }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+int {\b booleanQuery} (const char *prompt)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Query user for yes or no. }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+int {\b fileExists} (const char *filename)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Check for file existence. }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+int {\b copyFile} (const char *src, const char *dest)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Make a copy of a file. Uses fread(3) & fwrite(3). }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+int {\b copyFile2} (const char *src, const char *dest)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Make a copy of a file. Uses read(2) & write(2). }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+int {\b lsFiles} (const char *dirname, const char *files)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+List files in a directory. }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+int {\b fileInfo} (const char *filepath)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Display information about a file. }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+int {\b checkProcess} (const char *process_name)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Check if a process is currently running. }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+int {\b displayProcess} (const char *process_name)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Display info on a running process. }{
+}\par
+}\par}
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+int {\b validateDNSname} (const char *dns_name)\par
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+DNS name must start & end with a letter or a number and can only contain letters, numbers, and hyphens. }{
+}\par
+}\par}
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Detailed Description\par
+\pard\plain 
+{
+\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Common functions and system actions. \par
+}{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+\par
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Author\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+Robert Primmer ({\f2 https://github.com/rprimmer}) \par
+}}{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Version\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+1.2 \par
+}}{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Date\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+2024-03-24 \par
+}}}{
+Definition in file {\b system-actions.h}.}\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Macro Definition Documentation\par
+\pard\plain 
+{\xe \v HANDLE_ERROR\:system-actions.h}
+{\xe \v system-actions.h\:HANDLE_ERROR}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+#define HANDLE_ERROR( fmt,   {\i ...})\~ handleError(true, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__)}}
+\par
+{\bkmkstart AAAAAAAAAK}
+{\bkmkend AAAAAAAAAK}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+Definition at line {\b 37} of file {\b system-actions.h}.}\par
+}
+{\xe \v REPORT_ERROR\:system-actions.h}
+{\xe \v system-actions.h\:REPORT_ERROR}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+#define REPORT_ERROR( fmt,   {\i ...})\~ handleError(false, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__)}}
+\par
+{\bkmkstart AAAAAAAAAL}
+{\bkmkend AAAAAAAAAL}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+Definition at line {\b 38} of file {\b system-actions.h}.}\par
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Function Documentation\par
+\pard\plain 
+{\xe \v booleanQuery\:system-actions.h}
+{\xe \v system-actions.h\:booleanQuery}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+int booleanQuery (const char *  {\i prompt})}}
+\par
+{\bkmkstart AAAAAAAAAM}
+{\bkmkend AAAAAAAAAM}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Query user for yes or no. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i prompt} \cell }{Message to be displayed to user. \cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+int Return true if user entered y or Y. \par
+}}}{
+Definition at line {\b 17} of file {\b system-actions.c}.}\par
+}
+{\xe \v checkProcess\:system-actions.h}
+{\xe \v system-actions.h\:checkProcess}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+int checkProcess (const char *  {\i process_name})}}
+\par
+{\bkmkstart AAAAAAAAAN}
+{\bkmkend AAAAAAAAAN}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Check if a process is currently running. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i process_name} \cell }{Process to look for. \cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+int Return status. \par
+}}}{
+Definition at line {\b 212} of file {\b system-actions.c}.}\par
+}
+{\xe \v copyFile\:system-actions.h}
+{\xe \v system-actions.h\:copyFile}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+int copyFile (const char *  {\i src}, const char *  {\i dest})}}
+\par
+{\bkmkstart AAAAAAAAAO}
+{\bkmkend AAAAAAAAAO}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Make a copy of a file. Uses fread(3) & fwrite(3). }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i src} \cell }{File to be copied. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i dest} \cell }{Filename of copy. \cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+int Return status. \par
+}}}{
+Definition at line {\b 37} of file {\b system-actions.c}.}\par
+}
+{\xe \v copyFile2\:system-actions.h}
+{\xe \v system-actions.h\:copyFile2}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+int copyFile2 (const char *  {\i src}, const char *  {\i dest})}}
+\par
+{\bkmkstart AAAAAAAAAP}
+{\bkmkend AAAAAAAAAP}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Make a copy of a file. Uses read(2) & write(2). }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i src} \cell }{File to be copied. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i dest} \cell }{Filename of copy. \cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+int Return status. \par
+}}}{
+Definition at line {\b 76} of file {\b system-actions.c}.}\par
+}
+{\xe \v displayProcess\:system-actions.h}
+{\xe \v system-actions.h\:displayProcess}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+int displayProcess (const char *  {\i process_name})}}
+\par
+{\bkmkstart AAAAAAAAAQ}
+{\bkmkend AAAAAAAAAQ}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Display info on a running process. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i process_name} \cell }{Process to look for. \cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+int Return status. \par
+}}}{
+Definition at line {\b 238} of file {\b system-actions.c}.}\par
+}
+{\xe \v fileExists\:system-actions.h}
+{\xe \v system-actions.h\:fileExists}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+int fileExists (const char *  {\i filename})}}
+\par
+{\bkmkstart AAAAAAAAAR}
+{\bkmkend AAAAAAAAAR}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Check for file existence. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i filename} \cell }{File to check. \cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+int Return true of file exists. \par
+}}}{
+Definition at line {\b 32} of file {\b system-actions.c}.}\par
+}
+{\xe \v fileInfo\:system-actions.h}
+{\xe \v system-actions.h\:fileInfo}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+int fileInfo (const char *  {\i filepath})}}
+\par
+{\bkmkstart AAAAAAAAAS}
+{\bkmkend AAAAAAAAAS}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Display information about a file. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i filepath} \cell }{File to stat. \cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+int Return status. \par
+}}}{
+Definition at line {\b 153} of file {\b system-actions.c}.}\par
+}
+{\xe \v handleError\:system-actions.h}
+{\xe \v system-actions.h\:handleError}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+void handleError (bool  {\i fatal}, char *  {\i file}, const char *  {\i func}, int  {\i line}, const char *  {\i fmt},   {\i ...})}}
+\par
+{\bkmkstart AAAAAAAAAT}
+{\bkmkend AAAAAAAAAT}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Common error handling routine. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i fatal} \cell }{If true, exit program, else returns to the caller. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i file} \cell }{C filename (translation unit) of caller. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i func} \cell }{Function name of caller. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i line} \cell }{Line number in translation unit. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i fmt} \cell }{Optional parameters can be provided (va_list). \cell }
+{\row }
+}
+}{
+Definition at line {\b 5} of file {\b system-actions.c}.}\par
+}
+{\xe \v lsFiles\:system-actions.h}
+{\xe \v system-actions.h\:lsFiles}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+int lsFiles (const char *  {\i dirname}, const char *  {\i files})}}
+\par
+{\bkmkstart AAAAAAAAAU}
+{\bkmkend AAAAAAAAAU}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+List files in a directory. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i dirname} \cell }{Directory housing files. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i files} \cell }{Files to list. \cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+int Return status. \par
+}}}{
+Definition at line {\b 116} of file {\b system-actions.c}.}\par
+}
+{\xe \v validateDNSname\:system-actions.h}
+{\xe \v system-actions.h\:validateDNSname}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+int validateDNSname (const char *  {\i dns_name})}}
+\par
+{\bkmkstart AAAAAAAAAV}
+{\bkmkend AAAAAAAAAV}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+\par
+{
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+DNS name must start & end with a letter or a number and can only contain letters, numbers, and hyphens. }}\par
+{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Parameters\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i dns_name} \cell }{DNS name to check. \cell }
+{\row }
+}
+{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
+Returns\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
+int Return status. \par
+}}}{
+Definition at line {\b 253} of file {\b system-actions.c}.}\par
+}
+\par \pard\plain 
+
+\pard\plain \sect\sbkpage
+\s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+\pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
+system-actions.h\par \pard\plain 
+{\tc\tcl2 \v src/system-actions.h}
+{\xe \v src/system-actions.h}
+{\bkmkstart AAAAAAAAAF}
+{\bkmkend AAAAAAAAAF}
+Go to the documentation of this file.\par
+{
+\pard\plain \s40\li0\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 00001 \par
+00009 {\cf21 #ifndef SYSTEM_ACTIONS_H}\par
+00010 {\cf21 #define SYSTEM_ACTIONS_H}\par
+00011 \par
+00012 {\cf21 #include <dirent.h>}\par
+00013 {\cf21 #include <errno.h>}\par
+00014 {\cf21 #include <fcntl.h>}\par
+00015 {\cf21 #include <fnmatch.h>}\par
+00016 {\cf21 #include <grp.h>}\par
+00017 {\cf21 #include <libgen.h>}\par
+00018 {\cf21 #include <limits.h>}\par
+00019 {\cf21 #include <pwd.h>}\par
+00020 {\cf21 #include <regex.h>}\par
+00021 {\cf21 #include <stdarg.h>}\par
+00022 {\cf21 #include <stdbool.h>}\par
+00023 {\cf21 #include <stdio.h>}\par
+00024 {\cf21 #include <stdlib.h>}\par
+00025 {\cf21 #include <string.h>}\par
+00026 {\cf21 #include <sys/stat.h>}\par
+00027 {\cf21 #include <sys/types.h>}\par
+00028 {\cf21 #include <sys/wait.h>}\par
+00029 {\cf21 #include <time.h>}\par
+00030 {\cf21 #include <unistd.h>}\par
+00031 \par
+00032 {\cf20 // ##__VA_ARGS__ is a GNU extension that still works if __VA_ARGS__ is empty, }\par
+00033 {\cf20 // which supports calling the macro with just a string or with additional format arguments.}\par
+00034 {\cf20 // Modern compilers support this so I didn't want to clutter the code with a bunch of }\par
+00035 {\cf20 // #ifdef __GNUC__ conditionals just for the sake of some ancient compiler from long long ago.}\par
+00036 {\cf20 // __func__ was introduced in C99. }\par
+00037 {\cf21 #define HANDLE_ERROR(fmt, ...) handleError(true, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__)}\par
+00038 {\cf21 #define REPORT_ERROR(fmt, ...) handleError(false, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__)}\par
+00039 \par
+00049 {\cf18 void} handleError({\cf18 bool} fatal, {\cf18 char} *file, {\cf17 const} {\cf18 char} *func, {\cf18 int} line, {\cf17 const} {\cf18 char} *fmt, ...);\par
+00050 \par
+00057 {\cf18 int} booleanQuery({\cf17 const} {\cf18 char} *prompt); \par
+00058 \par
+00065 {\cf18 int} fileExists({\cf17 const} {\cf18 char} *filename);\par
+00066 \par
+00074 {\cf18 int} copyFile({\cf17 const} {\cf18 char} *src, {\cf17 const} {\cf18 char} *dest);\par
+00075 \par
+00083 {\cf18 int} copyFile2({\cf17 const} {\cf18 char} *src, {\cf17 const} {\cf18 char} *dest);\par
+00084 \par
+00092 {\cf18 int} lsFiles({\cf17 const} {\cf18 char} *dirname, {\cf17 const} {\cf18 char} *files);\par
+00093 \par
+00100 {\cf18 int} fileInfo({\cf17 const} {\cf18 char} *filepath);\par
+00101 \par
+00108 {\cf18 int} checkProcess({\cf17 const} {\cf18 char} *process_name);\par
+00109 \par
+00116 {\cf18 int} displayProcess({\cf17 const} {\cf18 char} *process_name);\par
+00117 \par
+00124 {\cf18 int} validateDNSname({\cf17 const} {\cf18 char} *dns_name);\par
+00125 \par
+00126 {\cf21 #endif }{\cf20 /* SYSTEM_ACTIONS_H */}{\cf21 }\par
+}
+
+\pard\plain \sect\sbkpage
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid 
+\s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid Index\par 
+\pard\plain 
+{\tc \v Index}
+{\field\fldedit {\*\fldinst INDEX \\c2 \\*MERGEFORMAT}{\fldrslt INDEX}}
+}

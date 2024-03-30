@@ -1,0 +1,274 @@
+\doxysection{system-\/actions.c}
+\hypertarget{system-actions_8c_source}{}\label{system-actions_8c_source}\index{src/system-\/actions.c@{src/system-\/actions.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00001}00001\ \textcolor{comment}{//\ system-\/actions.c}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{system-actions_8h}{system-\/actions.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00005}\mbox{\hyperlink{system-actions_8h_ab719e77d50ec6d2ad1d970def769b19f}{00005}}\ \textcolor{keywordtype}{void}\ handleError(\textcolor{keywordtype}{bool}\ fatal,\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *func,\ \textcolor{keywordtype}{int}\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00006}00006\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Error\ in\ \%s:\%s,\ line\ \%d:\ "{}},\ basename(file),\ func,\ line);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00007}00007\ \ \ \ \ va\_list\ args;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00008}00008\ \ \ \ \ va\_start(args,\ fmt);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00009}00009\ \ \ \ \ vfprintf(stderr,\ fmt,\ args);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00010}00010\ \ \ \ \ va\_end(args);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00011}00011\ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00013}00013\ \ \ \ \ \textcolor{keywordflow}{if}\ (fatal)\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00014}00014\ \ \ \ \ \ \ \ \ exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00015}00015\ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00017}\mbox{\hyperlink{system-actions_8h_aacec6921920b3fd38c4a4e697b511294}{00017}}\ \textcolor{keywordtype}{int}\ booleanQuery(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *prompt)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00018}00018\ \ \ \ \ \textcolor{keywordtype}{char}\ response[10];}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00020}00020\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\ "{}},\ prompt);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{if}\ (fgets(response,\ \textcolor{keyword}{sizeof}(response),\ stdin)\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00023}00023\ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}failed\ to\ read\ user\ response"{}});\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ Empty\ newline\ interpreted\ as\ non-\/yes\ answer\ }}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00026}00026\ \ \ \ \ \textcolor{keywordflow}{if}\ (response[0]\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00029}00029\ \ \ \ \ \textcolor{keywordflow}{return}\ (response[0]\ ==\ \textcolor{charliteral}{'y'}\ ||\ response[0]\ ==\ \textcolor{charliteral}{'Y'});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00030}00030\ \}\ \textcolor{comment}{//\ booleanQuery()}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00032}\mbox{\hyperlink{system-actions_8h_a5c3fee518af0ba8b435624e66e850f73}{00032}}\ \textcolor{keywordtype}{int}\ fileExists(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00033}00033\ \ \ \ \ \textcolor{keyword}{struct\ }stat\ buffer;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{return}\ (stat(filename,\ \&buffer)\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00035}00035\ \}\ \textcolor{comment}{//\ fileExists()}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00037}\mbox{\hyperlink{system-actions_8h_a867793539943cf9063d0211f522bdeb7}{00037}}\ \textcolor{keywordtype}{int}\ copyFile(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *src,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *dest)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[BUFSIZ];}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00039}00039\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ bytesRead,\ bytesWritten;\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00041}00041\ \ \ \ \ FILE\ *source\ =\ fopen(src,\ \textcolor{stringliteral}{"{}rb"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{if}\ (source\ ==\ NULL)\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00043}00043\ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}error\ opening\ source\ file\ \%s"{}},\ src);\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00045}00045\ \ \ \ \ FILE\ *destination\ =\ fopen(dest,\ \textcolor{stringliteral}{"{}wb"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{if}\ (destination\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ fclose(source);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}error\ opening\ destination\ file:\ \%s"{}},\ dest);\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{while}\ ((bytesRead\ =\ fread(buffer,\ 1,\ \textcolor{keyword}{sizeof}(buffer),\ source))\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ bytesWritten\ =\ fwrite(buffer,\ 1,\ bytesRead,\ destination);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bytesWritten\ <\ bytesRead)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ fclose(source);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ fclose(destination);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}write\ error\ on\ destination\ file:\ \%s"{}},\ dest);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{if}\ (ferror(source))\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ fclose(source);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00062}00062\ \ \ \ \ \ \ \ \ fclose(destination);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}read\ error:\ \%s"{}},\ src);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00064}00064\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!feof(source))\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ fclose(source);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ fclose(destination);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}unexpected\ end\ of\ file:\ \%s"{}},\ src);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00070}00070\ \ \ \ \ fclose(source);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00071}00071\ \ \ \ \ fclose(destination);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00073}00073\ \ \ \ \ \textcolor{keywordflow}{return}\ EXIT\_SUCCESS;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00074}00074\ \}\ \textcolor{comment}{//\ copyFile()}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00076}\mbox{\hyperlink{system-actions_8h_ad8b64d3293d7b5b4eef88bb487f52dc7}{00076}}\ \textcolor{keywordtype}{int}\ copyFile2(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *src,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *dest)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00077}00077\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[BUFSIZ];}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00078}00078\ \ \ \ \ ssize\_t\ bytes\_read,\ bytes\_written,\ total\_written;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00080}00080\ \ \ \ \ \textcolor{keywordtype}{int}\ source\_fd\ =\ open(src,\ O\_RDONLY);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00081}00081\ \ \ \ \ \textcolor{keywordflow}{if}\ (source\_fd\ ==\ -\/1)\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}failed\ to\ open\ source\ file:\ \%s"{}},\ src);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{int}\ dest\_fd\ =\ open(dest,\ O\_WRONLY\ |\ O\_CREAT\ |\ O\_TRUNC,\ 0644);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00085}00085\ \ \ \ \ \textcolor{keywordflow}{if}\ (dest\_fd\ ==\ -\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00086}00086\ \ \ \ \ \ \ \ \ close(source\_fd);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00087}00087\ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}failed\ to\ create\ destination\ file:\ \%s"{}},\ dest);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00088}00088\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{while}\ ((bytes\_read\ =\ read(source\_fd,\ buffer,\ \textcolor{keyword}{sizeof}(buffer)))\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ total\_written\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ bytes\_written\ =\ write(dest\_fd,\ buffer\ +\ total\_written,\ bytes\_read\ -\/\ total\_written);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bytes\_written\ >=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ total\_written\ +=\ bytes\_written;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ close(source\_fd);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ close(dest\_fd);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}write\ error:\ \%s"{}},\ dest);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00101}00101\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{while}\ (bytes\_read\ >\ total\_written);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{if}\ (bytes\_read\ ==\ -\/1)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00105}00105\ \ \ \ \ \ \ \ \ close(source\_fd);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00106}00106\ \ \ \ \ \ \ \ \ close(dest\_fd);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00107}00107\ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}read\ error:\ \%s"{}},\ src);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00108}00108\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00110}00110\ \ \ \ \ close(source\_fd);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00111}00111\ \ \ \ \ close(dest\_fd);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00113}00113\ \ \ \ \ \textcolor{keywordflow}{return}\ EXIT\_SUCCESS;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00114}00114\ \}\ \textcolor{comment}{//\ copyFile2()}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00116}\mbox{\hyperlink{system-actions_8h_af3f50032c2e61b1af985fa1cd136b18c}{00116}}\ \textcolor{keywordtype}{int}\ lsFiles(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *dirname,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *files)\ \{\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00117}00117\ \ \ \ \ DIR\ *dir\ =\ opendir(dirname);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{if}\ (dir\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00120}00120\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}opendir"{}});\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ EXIT\_FAILURE;\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00122}00122\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00124}00124\ \ \ \ \ \textcolor{keyword}{struct\ }dirent\ *entry;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{struct\ }stat\ file\_stat;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00126}00126\ \ \ \ \ \textcolor{keywordtype}{char}\ full\_path[PATH\_MAX];}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{while}\ ((entry\ =\ readdir(dir))\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fnmatch(files,\ entry-\/>d\_name,\ 0)\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dirname[strlen(dirname)\ -\/\ 1]\ ==\ \textcolor{charliteral}{'/'})\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ snprintf(full\_path,\ \textcolor{keyword}{sizeof}(full\_path),\ \textcolor{stringliteral}{"{}\%s\%s"{}},\ dirname,\ entry-\/>d\_name);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ snprintf(full\_path,\ \textcolor{keyword}{sizeof}(full\_path),\ \textcolor{stringliteral}{"{}\%s/\%s"{}},\ dirname,\ entry-\/>d\_name);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (lstat(full\_path,\ \&file\_stat)\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s\ "{}},\ full\_path);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Owner:\ \%s\ "{}},\ getpwuid(file\_stat.st\_uid)-\/>pw\_name);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Group:\ \%s\ "{}},\ getgrgid(file\_stat.st\_gid)-\/>gr\_name);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Size:\ \%lld\ "{}},\ (\textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long})file\_stat.st\_size);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Last\ modified:\ \%s"{}},\ ctime(\&file\_stat.st\_mtime));}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ REPORT\_ERROR(\textcolor{stringliteral}{"{}lstat:\ \%s"{}},\ strerror(errno));}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ closedir(dir);\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ EXIT\_FAILURE;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00147}00147\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00148}00148\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00150}00150\ \ \ \ \ \textcolor{keywordflow}{return}\ (closedir(dir));\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00151}00151\ \}\ \textcolor{comment}{//\ lsFiles()}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00153}\mbox{\hyperlink{system-actions_8h_ade1d1cc95d45aa0d314ee83573ca2d8b}{00153}}\ \textcolor{keywordtype}{int}\ fileInfo(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filepath)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00154}00154\ \ \ \ \ \textcolor{keyword}{struct\ }stat\ fileStat;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00155}00155\ \ \ \ \ \textcolor{keywordflow}{if}\ (lstat(filepath,\ \&fileStat)\ <\ 0)\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00156}00156\ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}lstat:\ \%s"{}},\ strerror(errno));}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00158}00158\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Information\ for\ \%s\(\backslash\)n"{}},\ filepath);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00159}00159\ \ \ \ \ printf(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00160}00160\ \ \ \ \ printf(\textcolor{stringliteral}{"{}File\ Size:\ \(\backslash\)t\(\backslash\)t\%lld\ bytes\(\backslash\)n"{}},\ (\textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long})fileStat.st\_size);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00161}00161\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Number\ of\ Links:\ \(\backslash\)t\%lu\(\backslash\)n"{}},\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long})fileStat.st\_nlink);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00162}00162\ \ \ \ \ printf(\textcolor{stringliteral}{"{}File\ inode:\ \(\backslash\)t\(\backslash\)t\%lu\(\backslash\)n"{}},\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long})fileStat.st\_ino);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00164}00164\ \ \ \ \ printf(\textcolor{stringliteral}{"{}File\ Permissions:\ \(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00165}00165\ \ \ \ \ printf((S\_ISDIR(fileStat.st\_mode))\ ?\ \textcolor{stringliteral}{"{}d"{}}\ :\ (S\_ISLNK(fileStat.st\_mode))\ ?\ \textcolor{stringliteral}{"{}l"{}}\ :\ (S\_ISFIFO(fileStat.st\_mode))\ ?\ \textcolor{stringliteral}{"{}p"{}}\ :}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ (S\_ISSOCK(fileStat.st\_mode))\ ?\ \textcolor{stringliteral}{"{}s"{}}\ :\ (S\_ISCHR(fileStat.st\_mode))\ ?\ \textcolor{stringliteral}{"{}c"{}}\ :\ (S\_ISBLK(fileStat.st\_mode))\ ?\ \textcolor{stringliteral}{"{}b"{}}\ :\ \textcolor{stringliteral}{"{}-\/"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00167}00167\ \ \ \ \ printf((fileStat.st\_mode\ \&\ S\_IRUSR)\ ?\ \textcolor{stringliteral}{"{}r"{}}\ :\ \textcolor{stringliteral}{"{}-\/"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00168}00168\ \ \ \ \ printf((fileStat.st\_mode\ \&\ S\_IWUSR)\ ?\ \textcolor{stringliteral}{"{}w"{}}\ :\ \textcolor{stringliteral}{"{}-\/"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00169}00169\ \ \ \ \ printf((fileStat.st\_mode\ \&\ S\_IXUSR)\ ?\ ((fileStat.st\_mode\ \&\ S\_ISUID)\ ?\ \textcolor{stringliteral}{"{}s"{}}\ :\ \textcolor{stringliteral}{"{}x"{}})\ :\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ ((fileStat.st\_mode\ \&\ S\_ISUID)\ ?\ \textcolor{stringliteral}{"{}S"{}}\ :\ \textcolor{stringliteral}{"{}-\/"{}}));}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00171}00171\ \ \ \ \ printf((fileStat.st\_mode\ \&\ S\_IRGRP)\ ?\ \textcolor{stringliteral}{"{}r"{}}\ :\ \textcolor{stringliteral}{"{}-\/"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00172}00172\ \ \ \ \ printf((fileStat.st\_mode\ \&\ S\_IWGRP)\ ?\ \textcolor{stringliteral}{"{}w"{}}\ :\ \textcolor{stringliteral}{"{}-\/"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00173}00173\ \ \ \ \ printf((fileStat.st\_mode\ \&\ S\_IXGRP)\ ?\ ((fileStat.st\_mode\ \&\ S\_ISGID)\ ?\ \textcolor{stringliteral}{"{}s"{}}\ :\ \textcolor{stringliteral}{"{}x"{}})\ :}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ ((fileStat.st\_mode\ \&\ S\_ISGID)\ ?\ \textcolor{stringliteral}{"{}S"{}}\ :\ \textcolor{stringliteral}{"{}-\/"{}}));}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00175}00175\ \ \ \ \ printf((fileStat.st\_mode\ \&\ S\_IROTH)\ ?\ \textcolor{stringliteral}{"{}r"{}}\ :\ \textcolor{stringliteral}{"{}-\/"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00176}00176\ \ \ \ \ printf((fileStat.st\_mode\ \&\ S\_IWOTH)\ ?\ \textcolor{stringliteral}{"{}w"{}}\ :\ \textcolor{stringliteral}{"{}-\/"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00177}00177\ \ \ \ \ printf((fileStat.st\_mode\ \&\ S\_IXOTH)\ ?\ ((fileStat.st\_mode\ \&\ S\_ISVTX)\ ?\ \textcolor{stringliteral}{"{}t"{}}\ :\ \textcolor{stringliteral}{"{}x"{}})\ :}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ ((fileStat.st\_mode\ \&\ S\_ISVTX)\ ?\ \textcolor{stringliteral}{"{}T"{}}\ :\ \textcolor{stringliteral}{"{}-\/"{}}));}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00179}00179\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00181}00181\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Last\ access\ time:\ \(\backslash\)t\%s"{}},\ ctime(\&fileStat.st\_atime));}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00182}00182\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Last\ modification\ time:\ \%s"{}},\ ctime(\&fileStat.st\_mtime));}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00183}00183\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Last\ status\ change\ time:\ \%s"{}},\ ctime(\&fileStat.st\_ctime));}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00185}00185\ \ \ \ \ \textcolor{keyword}{struct\ }passwd\ *pw\ =\ getpwuid(fileStat.st\_uid);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00186}00186\ \ \ \ \ \textcolor{keyword}{struct\ }group\ *gr\ =\ getgrgid(fileStat.st\_gid);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00187}00187\ \ \ \ \ printf(\textcolor{stringliteral}{"{}File\ Owner:\ \(\backslash\)t\(\backslash\)t\%s\ (\%d)\(\backslash\)n"{}},\ pw-\/>pw\_name,\ fileStat.st\_uid);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00188}00188\ \ \ \ \ printf(\textcolor{stringliteral}{"{}File\ Group:\ \(\backslash\)t\(\backslash\)t\%s\ (\%d)\(\backslash\)n"{}},\ gr-\/>gr\_name,\ fileStat.st\_gid);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00189}00189\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Block\ Size:\ \(\backslash\)t\(\backslash\)t\%ld\ bytes\(\backslash\)n"{}},\ (\textcolor{keywordtype}{long})fileStat.st\_blksize);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00191}00191\ \ \ \ \ printf(\textcolor{stringliteral}{"{}File\ Type:\ \(\backslash\)t\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00192}00192\ \ \ \ \ \textcolor{keywordflow}{if}\ (S\_ISREG(fileStat.st\_mode))}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00193}00193\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Regular\ file\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00194}00194\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (S\_ISDIR(fileStat.st\_mode))}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00195}00195\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Directory\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00196}00196\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (S\_ISCHR(fileStat.st\_mode))}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00197}00197\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Character\ device\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00198}00198\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (S\_ISBLK(fileStat.st\_mode))}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00199}00199\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Block\ device\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00200}00200\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (S\_ISFIFO(fileStat.st\_mode))}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00201}00201\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}FIFO\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00202}00202\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (S\_ISLNK(fileStat.st\_mode))}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00203}00203\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Symbolic\ link\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00204}00204\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (S\_ISSOCK(fileStat.st\_mode))}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00205}00205\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Socket\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00206}00206\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00207}00207\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Unknown\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00209}00209\ \ \ \ \ \textcolor{keywordflow}{return}\ EXIT\_SUCCESS;\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00210}00210\ \}\ \textcolor{comment}{//\ fileInfo()}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00212}\mbox{\hyperlink{system-actions_8h_a17115f262e6d530eb316f389d25ea9c3}{00212}}\ \textcolor{keywordtype}{int}\ checkProcess(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *process\_name)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00213}00213\ \ \ \ \ \textcolor{keywordtype}{char}\ command[128];}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00214}00214\ \ \ \ \ snprintf(command,\ \textcolor{keyword}{sizeof}(command),\ \textcolor{stringliteral}{"{}pgrep\ \%s"{}},\ process\_name);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00216}00216\ \ \ \ \ FILE\ *pipe\ =\ popen(command,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00217}00217\ \ \ \ \ \textcolor{keywordflow}{if}\ (pipe\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00218}00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ EXIT\_FAILURE;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00220}00220\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[256];}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00221}00221\ \ \ \ \ \textcolor{keywordflow}{if}\ (fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ pipe)\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00222}00222\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Warning:\ the\ \%s\ process\ is\ not\ running.\(\backslash\)n"{}},\ process\_name);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00223}00223\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00224}00224\ \ \ \ \ \ \ \ \ pid\_t\ pid\ =\ atoi(strtok(buffer,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}));\ \textcolor{comment}{//\ Extract\ first\ PID}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00225}00225\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ \%s\ process\ is\ running\ with\ PID(s):\ \%d"{}},\ process\_name,\ pid);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00227}00227\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ for\ additional\ PIDs}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ pipe)\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ pid\ =\ atoi(strtok(buffer,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}));}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \%d"{}},\ pid);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00231}00231\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00232}00232\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00233}00233\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00235}00235\ \ \ \ \ \textcolor{keywordflow}{return}\ (pclose(pipe));\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00236}00236\ \}\ \textcolor{comment}{//\ checkProcess()}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00238}\mbox{\hyperlink{system-actions_8h_a9933a8203091574569403e9409795446}{00238}}\ \textcolor{keywordtype}{int}\ displayProcess(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *process\_name)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00239}00239\ \ \ \ \ \textcolor{keywordtype}{char}\ command[128];}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00240}00240\ \ \ \ \ snprintf(command,\ \textcolor{keyword}{sizeof}(command),\ \textcolor{stringliteral}{"{}ps\ aux\ |\ grep\ \%s\ |\ grep\ -\/v\ grep"{}},\ process\_name);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00242}00242\ \ \ \ \ FILE\ *pipe\ =\ popen(command,\ \textcolor{stringliteral}{"{}r"{}});}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00243}00243\ \ \ \ \ \textcolor{keywordflow}{if}\ (pipe\ ==\ NULL)}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00244}00244\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ EXIT\_FAILURE;\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00246}00246\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[256];}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00247}00247\ \ \ \ \ \textcolor{keywordflow}{while}\ (fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ pipe)\ !=\ NULL)}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00248}00248\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ buffer);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00250}00250\ \ \ \ \ \textcolor{keywordflow}{return}\ (pclose(pipe));}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00251}00251\ \}\ \textcolor{comment}{//\ displayProcess()}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00253}\mbox{\hyperlink{system-actions_8h_a5ffe2cbc043d8660d971d6b9d734f539}{00253}}\ \textcolor{keywordtype}{int}\ validateDNSname(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *dns\_name)\ \{}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00254}00254\ \ \ \ \ regex\_t\ regex;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00255}00255\ \ \ \ \ \textcolor{keywordtype}{int}\ result;}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00256}00256\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *dns\_regex\ =\ \textcolor{stringliteral}{"{}\string^([a-\/zA-\/Z0-\/9]([-\/a-\/zA-\/Z0-\/9]\{0,61\}[a-\/zA-\/Z0-\/9])?\(\backslash\)\(\backslash\).)+[a-\/zA-\/Z]\{2,\}\$"{}};}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00258}00258\ \ \ \ \ \textcolor{comment}{//\ Compile\ the\ regular\ expression}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00259}00259\ \ \ \ \ result\ =\ regcomp(\&regex,\ dns\_regex,\ REG\_EXTENDED\ |\ REG\_NOSUB);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00260}00260\ \ \ \ \ \textcolor{keywordflow}{if}\ (result)\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00261}00261\ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}could\ not\ compile\ regex"{}});\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00262}00262\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00263}00263\ \ \ \ \ \textcolor{comment}{//\ Execute\ the\ regular\ expression}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00264}00264\ \ \ \ \ result\ =\ regexec(\&regex,\ dns\_name,\ 0,\ NULL,\ 0);}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00265}00265\ \ \ \ \ regfree(\&regex);\ \textcolor{comment}{//\ Free\ memory\ allocated\ to\ the\ pattern\ buffer\ by\ regcomp}}
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00267}00267\ \ \ \ \ \textcolor{keywordflow}{return}\ result;\ }
+\DoxyCodeLine{\Hypertarget{system-actions_8c_source_l00268}00268\ \}\ \textcolor{comment}{//\ validateDNSname}}
+
+\end{DoxyCode}

@@ -39,9 +39,11 @@ markdown: README.md
 	$(PANDOC) README.md -o readme.pdf
 	# $(PANDOC) $(PROGRAM)-design-spec.md -o $(PROGRAM)-design-spec.pdf
 
-docs: $(DOCDIR)
-	$(DOXYGEN) Doxyfile
+docs: 
+	$(DOXYGEN) Doxyfile > makefile.out 2>&1
+	$(MAKE) -C $(DOCDIR)/latex >> makefile.out 2>&1
+	ln -sf docs/html/index.html fescape-apidoc.html
 	cp docs/latex/refman.pdf ./$(PROGRAM)-apidoc.pdf
 
 clean:
-	$(RM) -rf $(BINDIR)/* $(OBJ)/* *.dSYM readme.pdf $(PROGRAM)-design-spec.pdf $(PROGRAM)-apidoc.pdf
+	$(RM) -rf $(BINDIR)/* $(OBJ)/* *.dSYM readme.pdf $(PROGRAM)-design-spec.pdf $(PROGRAM)-apidoc.*

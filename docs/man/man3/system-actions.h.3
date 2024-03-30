@@ -1,0 +1,330 @@
+.TH "src/system-actions.h" 3 "Version 1.1" "fescape" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/system-actions.h \- Common functions and system actions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fR#include <dirent\&.h>\fP
+.br
+\fR#include <errno\&.h>\fP
+.br
+\fR#include <fcntl\&.h>\fP
+.br
+\fR#include <fnmatch\&.h>\fP
+.br
+\fR#include <grp\&.h>\fP
+.br
+\fR#include <libgen\&.h>\fP
+.br
+\fR#include <limits\&.h>\fP
+.br
+\fR#include <pwd\&.h>\fP
+.br
+\fR#include <regex\&.h>\fP
+.br
+\fR#include <stdarg\&.h>\fP
+.br
+\fR#include <stdbool\&.h>\fP
+.br
+\fR#include <stdio\&.h>\fP
+.br
+\fR#include <stdlib\&.h>\fP
+.br
+\fR#include <string\&.h>\fP
+.br
+\fR#include <sys/stat\&.h>\fP
+.br
+\fR#include <sys/types\&.h>\fP
+.br
+\fR#include <sys/wait\&.h>\fP
+.br
+\fR#include <time\&.h>\fP
+.br
+\fR#include <unistd\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBHANDLE_ERROR\fP(fmt, \&.\&.\&.)   handleError(true, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__)"
+.br
+.ti -1c
+.RI "#define \fBREPORT_ERROR\fP(fmt, \&.\&.\&.)   handleError(false, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBhandleError\fP (bool fatal, char *file, const char *func, int line, const char *fmt,\&.\&.\&.)"
+.br
+.RI "Common error handling routine\&. "
+.ti -1c
+.RI "int \fBbooleanQuery\fP (const char *prompt)"
+.br
+.RI "Query user for yes or no\&. "
+.ti -1c
+.RI "int \fBfileExists\fP (const char *filename)"
+.br
+.RI "Check for file existence\&. "
+.ti -1c
+.RI "int \fBcopyFile\fP (const char *src, const char *dest)"
+.br
+.RI "Make a copy of a file\&. Uses fread(3) & fwrite(3)\&. "
+.ti -1c
+.RI "int \fBcopyFile2\fP (const char *src, const char *dest)"
+.br
+.RI "Make a copy of a file\&. Uses read(2) & write(2)\&. "
+.ti -1c
+.RI "int \fBlsFiles\fP (const char *dirname, const char *files)"
+.br
+.RI "List files in a directory\&. "
+.ti -1c
+.RI "int \fBfileInfo\fP (const char *filepath)"
+.br
+.RI "Display information about a file\&. "
+.ti -1c
+.RI "int \fBcheckProcess\fP (const char *process_name)"
+.br
+.RI "Check if a process is currently running\&. "
+.ti -1c
+.RI "int \fBdisplayProcess\fP (const char *process_name)"
+.br
+.RI "Display info on a running process\&. "
+.ti -1c
+.RI "int \fBvalidateDNSname\fP (const char *dns_name)"
+.br
+.RI "DNS name must start & end with a letter or a number and can only contain letters, numbers, and hyphens\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Common functions and system actions\&. 
+
+
+.PP
+\fBAuthor\fP
+.RS 4
+Robert Primmer (https://github.com/rprimmer) 
+.RE
+.PP
+\fBVersion\fP
+.RS 4
+1\&.2 
+.RE
+.PP
+\fBDate\fP
+.RS 4
+2024-03-24 
+.RE
+.PP
+
+.PP
+Definition in file \fBsystem\-actions\&.h\fP\&.
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define HANDLE_ERROR(fmt,  \&.\&.\&.)   handleError(true, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__)"
+
+.PP
+Definition at line \fB37\fP of file \fBsystem\-actions\&.h\fP\&.
+.SS "#define REPORT_ERROR(fmt,  \&.\&.\&.)   handleError(false, __FILE__, __func__, __LINE__, fmt, ##__VA_ARGS__)"
+
+.PP
+Definition at line \fB38\fP of file \fBsystem\-actions\&.h\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "int booleanQuery (const char * prompt)"
+
+.PP
+Query user for yes or no\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIprompt\fP Message to be displayed to user\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+int Return true if user entered y or Y\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB17\fP of file \fBsystem\-actions\&.c\fP\&.
+.SS "int checkProcess (const char * process_name)"
+
+.PP
+Check if a process is currently running\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIprocess_name\fP Process to look for\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+int Return status\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB212\fP of file \fBsystem\-actions\&.c\fP\&.
+.SS "int copyFile (const char * src, const char * dest)"
+
+.PP
+Make a copy of a file\&. Uses fread(3) & fwrite(3)\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsrc\fP File to be copied\&. 
+.br
+\fIdest\fP Filename of copy\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+int Return status\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB37\fP of file \fBsystem\-actions\&.c\fP\&.
+.SS "int copyFile2 (const char * src, const char * dest)"
+
+.PP
+Make a copy of a file\&. Uses read(2) & write(2)\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsrc\fP File to be copied\&. 
+.br
+\fIdest\fP Filename of copy\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+int Return status\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB76\fP of file \fBsystem\-actions\&.c\fP\&.
+.SS "int displayProcess (const char * process_name)"
+
+.PP
+Display info on a running process\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIprocess_name\fP Process to look for\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+int Return status\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB238\fP of file \fBsystem\-actions\&.c\fP\&.
+.SS "int fileExists (const char * filename)"
+
+.PP
+Check for file existence\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilename\fP File to check\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+int Return true of file exists\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB32\fP of file \fBsystem\-actions\&.c\fP\&.
+.SS "int fileInfo (const char * filepath)"
+
+.PP
+Display information about a file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfilepath\fP File to stat\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+int Return status\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB153\fP of file \fBsystem\-actions\&.c\fP\&.
+.SS "void handleError (bool fatal, char * file, const char * func, int line, const char * fmt,  \&.\&.\&.)"
+
+.PP
+Common error handling routine\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfatal\fP If true, exit program, else returns to the caller\&. 
+.br
+\fIfile\fP C filename (translation unit) of caller\&. 
+.br
+\fIfunc\fP Function name of caller\&. 
+.br
+\fIline\fP Line number in translation unit\&. 
+.br
+\fIfmt\fP Optional parameters can be provided (va_list)\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB5\fP of file \fBsystem\-actions\&.c\fP\&.
+.SS "int lsFiles (const char * dirname, const char * files)"
+
+.PP
+List files in a directory\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdirname\fP Directory housing files\&. 
+.br
+\fIfiles\fP Files to list\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+int Return status\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB116\fP of file \fBsystem\-actions\&.c\fP\&.
+.SS "int validateDNSname (const char * dns_name)"
+
+.PP
+DNS name must start & end with a letter or a number and can only contain letters, numbers, and hyphens\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIdns_name\fP DNS name to check\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+int Return status\&. 
+.RE
+.PP
+
+.PP
+Definition at line \fB253\fP of file \fBsystem\-actions\&.c\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for fescape from the source code\&.

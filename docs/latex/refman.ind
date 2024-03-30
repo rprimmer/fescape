@@ -1,69 +1,81 @@
 \begin{theindex}
 
   \item {booleanQuery}
-    \subitem {system-\/actions.h}, \hyperpage{6}
+    \subitem {system-\/actions.h}, \hyperpage{12}
 
   \indexspace
 
   \item {checkProcess}
-    \subitem {system-\/actions.h}, \hyperpage{7}
+    \subitem {system-\/actions.h}, \hyperpage{12}
   \item {copyFile}
-    \subitem {system-\/actions.h}, \hyperpage{7}
+    \subitem {system-\/actions.h}, \hyperpage{13}
   \item {copyFile2}
-    \subitem {system-\/actions.h}, \hyperpage{7}
+    \subitem {system-\/actions.h}, \hyperpage{13}
 
   \indexspace
 
   \item {displayProcess}
-    \subitem {system-\/actions.h}, \hyperpage{8}
+    \subitem {system-\/actions.h}, \hyperpage{13}
 
   \indexspace
 
   \item {fescape}
-    \subitem {fescape.h}, \hyperpage{4}
+    \subitem {fescape.h}, \hyperpage{5}
   \item {fescape.h}
-    \subitem {fescape}, \hyperpage{4}
-    \subitem {usage}, \hyperpage{4}
+    \subitem {fescape}, \hyperpage{5}
+    \subitem {usage}, \hyperpage{5}
   \item {fileExists}
-    \subitem {system-\/actions.h}, \hyperpage{8}
+    \subitem {system-\/actions.h}, \hyperpage{14}
   \item {fileInfo}
-    \subitem {system-\/actions.h}, \hyperpage{8}
+    \subitem {system-\/actions.h}, \hyperpage{14}
 
   \indexspace
 
+  \item {HANDLE\_ERROR}
+    \subitem {system-\/actions.h}, \hyperpage{12}
   \item {handleError}
-    \subitem {system-\/actions.h}, \hyperpage{9}
+    \subitem {system-\/actions.h}, \hyperpage{14}
 
   \indexspace
 
   \item {lsFiles}
-    \subitem {system-\/actions.h}, \hyperpage{9}
+    \subitem {system-\/actions.h}, \hyperpage{15}
+
+  \indexspace
+
+  \item {REPORT\_ERROR}
+    \subitem {system-\/actions.h}, \hyperpage{12}
 
   \indexspace
 
   \item {src/actions.h}, \hyperpage{3}
-  \item {src/fescape.h}, \hyperpage{3}, \hyperpage{5}
-  \item {src/system-\/actions.h}, \hyperpage{5}, \hyperpage{10}
+  \item {src/fescape.c}, \hyperpage{3}
+  \item {src/fescape.h}, \hyperpage{4}, \hyperpage{6}
+  \item {src/main.c}, \hyperpage{6}
+  \item {src/system-\/actions.c}, \hyperpage{7}
+  \item {src/system-\/actions.h}, \hyperpage{10}, \hyperpage{16}
   \item {system-\/actions.h}
-    \subitem {booleanQuery}, \hyperpage{6}
-    \subitem {checkProcess}, \hyperpage{7}
-    \subitem {copyFile}, \hyperpage{7}
-    \subitem {copyFile2}, \hyperpage{7}
-    \subitem {displayProcess}, \hyperpage{8}
-    \subitem {fileExists}, \hyperpage{8}
-    \subitem {fileInfo}, \hyperpage{8}
-    \subitem {handleError}, \hyperpage{9}
-    \subitem {lsFiles}, \hyperpage{9}
-    \subitem {validateDNSname}, \hyperpage{9}
+    \subitem {booleanQuery}, \hyperpage{12}
+    \subitem {checkProcess}, \hyperpage{12}
+    \subitem {copyFile}, \hyperpage{13}
+    \subitem {copyFile2}, \hyperpage{13}
+    \subitem {displayProcess}, \hyperpage{13}
+    \subitem {fileExists}, \hyperpage{14}
+    \subitem {fileInfo}, \hyperpage{14}
+    \subitem {HANDLE\_ERROR}, \hyperpage{12}
+    \subitem {handleError}, \hyperpage{14}
+    \subitem {lsFiles}, \hyperpage{15}
+    \subitem {REPORT\_ERROR}, \hyperpage{12}
+    \subitem {validateDNSname}, \hyperpage{15}
 
   \indexspace
 
   \item {usage}
-    \subitem {fescape.h}, \hyperpage{4}
+    \subitem {fescape.h}, \hyperpage{5}
 
   \indexspace
 
   \item {validateDNSname}
-    \subitem {system-\/actions.h}, \hyperpage{9}
+    \subitem {system-\/actions.h}, \hyperpage{15}
 
 \end{theindex}
