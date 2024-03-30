@@ -10,7 +10,7 @@ Short and simple. Follow the original Unix philosophy of a program doing just on
 
 * Binary executable (`fescape`) located in `/usr/local/bin`
 * Manpage (`fescape.1`) located in `/usr/local/share/man/man1`
-* API documentation located in project folder as `fescape-apidoc.pdf`. Doc source files in `docs` folder.
+* API documentation located in project folder as `fescape-apidoc.pdf` and `fescape-apidoc.html`. Doc source files in `docs` folder.
 
 ## Arguments
 
