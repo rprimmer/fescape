@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
                 fescape(stdin, stdout, repeat_count, show_octal, filter_newlines);
             else {
                 if ((fp = fopen(argv[optind], "r")) == NULL) 
-                    HANDLE_ERROR("cannot open file: %s", argv[optind]);
+                    HANDLE_ERROR("fopen: %s, file: %s", strerror(errno), argv[optind]);
 
                 fescape(fp, stdout, repeat_count, show_octal, filter_newlines);
                 fprintf(stdout, "\n");

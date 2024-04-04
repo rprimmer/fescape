@@ -1,9 +1,13 @@
 {
+    "[makefile]": {
+        "editor.insertSpaces": false,
+        "editor.tabSize": 4,
+        "files.trimTrailingWhitespace": true
+    },
+
     "cSpell.words": [
         "apidoc",
         "Doxygen",
-        "fescape",
-        "hcno",
-        "hrno"
+        "foo"
     ]
 }

@@ -1,0 +1,58 @@
+.TH fescape 1
+.SH NAME
+fescape \- filter unprintable characters from input stream
+.SH USAGE
+.B fescape [OPTIONS] <ACTION>
+.SH DESCRIPTION
+Files that contain non-printable characters mess up the display when printed (e.g., via cat(1)).
+This program allows the streaming of such files, substituting hex (or optionally octal) codes for the
+non-printable characters. Optionally it can show the count for repeated non-printable characters
+rather than display each repeated hex/octal code.
+.SH OPTIONS
+.TP
+.TP
+\fB\-h, --help\fR
+.br 
+Displays command help.
+.TP
+\fB\-r, --repeats\fR
+.br 
+Display a count for repeated characters instead of the characters themselves.
+.TP
+\fB\-n, --newline\fR
+.br
+Do not filter newline characters.
+.TP
+\fB\-o, --octal\fR
+.br
+Display octal codes instead of default hex codes.
+.SH ARGUMENTS
+.TP
+.TP 
+\fB filename(s) \fR
+.br 
+File(s) to display or stdin if none specified.
+.SH RESTRICTIONS
+.TP
+None. 
+.\" .SH NOTES
+.\" .TP
+.\" Note text.
+.SH EXAMPLES
+.TP
+fescape
+.TP
+fescape -
+.TP
+fescape -cn File1 BinaryFile2
+.SH FILE LOCATIONS 
+.TP
+/usr/local/bin/fescape or ~/bin
+Executable 
+.TP
+/usr/local/share/man/man1/fescape.1
+Manpage 
+.\" .SH AUTHOR
+.\" .nf
+.\" Robert Primmer (https://github.com/rprimmer)
+.fi

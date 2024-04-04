@@ -2,8 +2,8 @@
  * @file system-actions.h
  * @author Robert Primmer (https://github.com/rprimmer)
  * @brief Common functions and system actions.
- * @version 1.2
- * @date 2024-03-24
+ * @version 1.3
+ * @date 2024-04-02
  */
 
 #ifndef SYSTEM_ACTIONS_H

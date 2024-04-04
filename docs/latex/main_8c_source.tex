@@ -67,7 +67,7 @@
 \DoxyCodeLine{\Hypertarget{main_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fescape(stdin,\ stdout,\ repeat\_count,\ show\_octal,\ filter\_newlines);}
 \DoxyCodeLine{\Hypertarget{main_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
 \DoxyCodeLine{\Hypertarget{main_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((fp\ =\ fopen(argv[optind],\ \textcolor{stringliteral}{"{}r"{}}))\ ==\ NULL)\ }
-\DoxyCodeLine{\Hypertarget{main_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}cannot\ open\ file:\ \%s"{}},\ argv[optind]);}
+\DoxyCodeLine{\Hypertarget{main_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}fopen:\ \%s,\ file:\ \%s"{}},\ strerror(errno),\ argv[optind]);}
 \DoxyCodeLine{\Hypertarget{main_8c_source_l00067}00067\ }
 \DoxyCodeLine{\Hypertarget{main_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fescape(fp,\ stdout,\ repeat\_count,\ show\_octal,\ filter\_newlines);}
 \DoxyCodeLine{\Hypertarget{main_8c_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stdout,\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}});}

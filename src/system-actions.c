@@ -19,12 +19,8 @@ int booleanQuery(const char *prompt) {
 
     printf("%s ", prompt);
 
-    if (fgets(response, sizeof(response), stdin) == NULL)
+    if (fgets(response, sizeof(response), stdin) == NULL) 
         HANDLE_ERROR("failed to read user response"); 
-
-    // Empty newline interpreted as non-yes answer 
-    if (response[0] == '\n')     
-        return 0;
 
     return (response[0] == 'y' || response[0] == 'Y');
 } // booleanQuery()
@@ -39,13 +35,16 @@ int copyFile(const char *src, const char *dest) {
     size_t bytesRead, bytesWritten; 
 
     FILE *source = fopen(src, "rb");
-    if (source == NULL) 
-        HANDLE_ERROR("error opening source file %s", src); 
+    if (source == NULL) {
+        REPORT_ERROR("fopen: %s, file %s", strerror(errno), src); 
+        return EXIT_FAILURE;
+    }
 
     FILE *destination = fopen(dest, "wb");
     if (destination == NULL) {
         fclose(source);
-        HANDLE_ERROR("error opening destination file: %s", dest); 
+        REPORT_ERROR("fopen: %s, file: %s", strerror(errno), dest); 
+        return EXIT_FAILURE;
     }
 
     while ((bytesRead = fread(buffer, 1, sizeof(buffer), source)) > 0) {
@@ -53,18 +52,21 @@ int copyFile(const char *src, const char *dest) {
         if (bytesWritten < bytesRead) {
             fclose(source);
             fclose(destination);
-            HANDLE_ERROR("write error on destination file: %s", dest);
+            REPORT_ERROR("fwrite: %s, file: %s", strerror(errno), dest);
+            return EXIT_FAILURE;
         }
     }
 
     if (ferror(source)) {
         fclose(source);
         fclose(destination);
-        HANDLE_ERROR("read error: %s", src);
+        REPORT_ERROR("read error: %s", src);
+        return EXIT_FAILURE;
     } else if (!feof(source)) {
         fclose(source);
         fclose(destination);
-        HANDLE_ERROR("unexpected end of file: %s", src);
+        REPORT_ERROR("unexpected end of file: %s", src);
+        return EXIT_FAILURE;
     }
 
     fclose(source);
@@ -78,13 +80,16 @@ int copyFile2(const char *src, const char *dest) {
     ssize_t bytes_read, bytes_written, total_written;
 
     int source_fd = open(src, O_RDONLY);
-    if (source_fd == -1) 
-        HANDLE_ERROR("failed to open source file: %s", src);
+    if (source_fd == -1) {
+        REPORT_ERROR("open: %s, file %s", strerror(errno), src);
+        return EXIT_FAILURE;
+    }
 
     int dest_fd = open(dest, O_WRONLY | O_CREAT | O_TRUNC, 0644);
     if (dest_fd == -1) {
         close(source_fd);
-        HANDLE_ERROR("failed to create destination file: %s", dest);
+        REPORT_ERROR("open: %s, file %s", strerror(errno), dest);
+        return EXIT_FAILURE;
     }
 
     while ((bytes_read = read(source_fd, buffer, sizeof(buffer))) > 0) {
@@ -96,7 +101,8 @@ int copyFile2(const char *src, const char *dest) {
             } else {
                 close(source_fd);
                 close(dest_fd);
-                HANDLE_ERROR("write error: %s", dest);
+                REPORT_ERROR("write: %s, file: %s", strerror(errno), dest);
+                return EXIT_FAILURE;
             }
         } while (bytes_read > total_written);
     }
@@ -104,7 +110,8 @@ int copyFile2(const char *src, const char *dest) {
     if (bytes_read == -1) {
         close(source_fd);
         close(dest_fd);
-        HANDLE_ERROR("read error: %s", src);
+        REPORT_ERROR("read error: %s", src);
+        return EXIT_FAILURE;
     }
 
     close(source_fd);
@@ -117,7 +124,7 @@ int lsFiles(const char *dirname, const char *files) {
     DIR *dir = opendir(dirname);
 
     if (dir == NULL) {
-        perror("opendir"); 
+        REPORT_ERROR("opendir: %s, file: %s", strerror(errno), dirname); 
         return EXIT_FAILURE; 
     }
 
@@ -140,8 +147,8 @@ int lsFiles(const char *dirname, const char *files) {
                 printf("Size: %lld ", (long long)file_stat.st_size);
                 printf("Last modified: %s", ctime(&file_stat.st_mtime));
             } else {
-                REPORT_ERROR("lstat: %s", strerror(errno));
                 closedir(dir); 
+                REPORT_ERROR("lstat: %s, file: %s", strerror(errno), full_path);
                 return EXIT_FAILURE;
             }
         }
@@ -152,8 +159,10 @@ int lsFiles(const char *dirname, const char *files) {
 
 int fileInfo(const char *filepath) {
     struct stat fileStat;
-    if (lstat(filepath, &fileStat) < 0) 
-        HANDLE_ERROR("lstat: %s", strerror(errno));
+    if (lstat(filepath, &fileStat) < 0) {
+        REPORT_ERROR("lstat: %s, file: %s", strerror(errno), filepath);
+        return EXIT_FAILURE;
+    }
 
     printf("Information for %s\n", filepath);
     printf("---------------------------\n");
@@ -214,8 +223,10 @@ int checkProcess(const char *process_name) {
     snprintf(command, sizeof(command), "pgrep %s", process_name);
 
     FILE *pipe = popen(command, "r");
-    if (pipe == NULL)
+    if (pipe == NULL) {
+        REPORT_ERROR("popen: %s, process name: %s", strerror(errno), process_name);
         return EXIT_FAILURE;
+    }
 
     char buffer[256];
     if (fgets(buffer, sizeof(buffer), pipe) == NULL)
@@ -240,8 +251,10 @@ int displayProcess(const char *process_name) {
     snprintf(command, sizeof(command), "ps aux | grep %s | grep -v grep", process_name);
 
     FILE *pipe = popen(command, "r");
-    if (pipe == NULL)
-        return EXIT_FAILURE; 
+    if (pipe == NULL) {
+        REPORT_ERROR("popen: %s, process name: %s", strerror(errno), process_name);
+        return EXIT_FAILURE;
+    }
 
     char buffer[256];
     while (fgets(buffer, sizeof(buffer), pipe) != NULL)
@@ -257,8 +270,10 @@ int validateDNSname(const char *dns_name) {
 
     // Compile the regular expression
     result = regcomp(&regex, dns_regex, REG_EXTENDED | REG_NOSUB);
-    if (result) 
-        HANDLE_ERROR("could not compile regex"); 
+    if (result) {
+        REPORT_ERROR("regex: %s, DNS name: %s", strerror(errno), dns_name); 
+        return EXIT_FAILURE;
+    }
 
     // Execute the regular expression
     result = regexec(&regex, dns_name, 0, NULL, 0);

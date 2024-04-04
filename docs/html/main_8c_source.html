@@ -165,7 +165,7 @@ $(function(){initNavTree('main_8c_source.html',''); initResizable(); });
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                fescape(stdin, stdout, repeat_count, show_octal, filter_newlines);</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                <span class="keywordflow">if</span> ((fp = fopen(argv[optind], <span class="stringliteral">&quot;r&quot;</span>)) == NULL) </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                    HANDLE_ERROR(<span class="stringliteral">&quot;cannot open file: %s&quot;</span>, argv[optind]);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                    HANDLE_ERROR(<span class="stringliteral">&quot;fopen: %s, file: %s&quot;</span>, strerror(errno), argv[optind]);</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                fescape(fp, stdout, repeat_count, show_octal, filter_newlines);</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                fprintf(stdout, <span class="stringliteral">&quot;\n&quot;</span>);</div>
