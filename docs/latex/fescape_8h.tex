@@ -29,10 +29,10 @@ Robert Primmer (\href{https://github.com/rprimmer}{\texttt{ https\+://github.\+c
 Files that contain non-\/printable characters mess up the display when printed (e.\+g., via cat(1)). This program allows the display of such files, substituting hex (or optionally octal) codes for the non-\/printable characters. Optionally it can show the count for repeated non-\/printable characters rather than display each repeated hex/octal code.
 
 \begin{DoxyVersion}{Version}
-1.\+1 
+1.\+2 
 \end{DoxyVersion}
 \begin{DoxyDate}{Date}
-2024-\/03-\/30 
+2024-\/04-\/08 
 \end{DoxyDate}
 
 
@@ -61,7 +61,7 @@ convert non-\/\+ASCII characters to hex or octal representation
 \hline
 {\em octal} & If true, display control sequences in octal instead of hex. \\
 \hline
-{\em filter\+\_\+newlines} & If false, do not filter out newline characters. \\
+{\em filter\+\_\+newlines} & If true, filter newline characters. \\
 \hline
 \end{DoxyParams}
 

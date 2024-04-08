@@ -175,7 +175,7 @@ fescape.c\par \pard\plain
 00006     printf({\cf22 "Options:\\n"});\par
 00007     printf({\cf22 "  -h, --help        Display this help message and exit\\n"});\par
 00008     printf({\cf22 "  -r, --repeats     Show repeated non-ASCII chars in brackets\\n"});\par
-00009     printf({\cf22 "  -n, --newline     Do not filter newline characters\\n"}); \par
+00009     printf({\cf22 "  -n, --newline     Filter newline characters\\n"}); \par
 00010     printf({\cf22 "  -o, --octal       Display non-ASCII characters in octal instead of hex\\n\\n"});\par
 00011     printf({\cf22 "Arguments:\\n"});\par
 00012     printf({\cf22 "  filename(s)       filename(s) to display\\n"});\par
@@ -204,8 +204,8 @@ fescape.c\par \pard\plain
 00035             HANDLE_ERROR({\cf22 "unable to read input stream"});\par
 00036         \}\par
 00037 \par
-00038         {\cf20 // Handle newlines separately when not filtering them}\par
-00039         {\cf19 if} (!filter_newlines && current_char == {\cf23 '\\n'}) \{\par
+00038         {\cf20 // Handle newlines separately when filtering them}\par
+00039         {\cf19 if} (filter_newlines && current_char == {\cf23 '\\n'}) \{\par
 00040             {\cf19 if} (repeat_count > 1 && repeats && saved_char != {\cf23 '\\n'}) \{\par
 00041                 fprintf(output_stream, {\cf22 "[%i]"}, repeat_count);\par
 00042                 repeat_count = 1;\par
@@ -300,10 +300,10 @@ Robert Primmer ({\f2 https://github.com/rprimmer})\par
 }}Files that contain non-printable characters mess up the display when printed (e.g., via cat(1)). This program allows the display of such files, substituting hex (or optionally octal) codes for the non-printable characters. Optionally it can show the count for repeated non-printable characters rather than display each repeated hex/octal code.\par
 {{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Version\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
-1.1 \par
+1.2 \par
 }}{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs20\cgrid 
 Date\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
-2024-03-30 \par
+2024-04-08 \par
 }}}{
 Definition in file {\b fescape.h}.}\par
 }
@@ -357,7 +357,7 @@ Parameters\par}
 \clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
 \clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
 \pard \widctlpar\intbl\adjustright
-{{\i filter_newlines} \cell }{If false, do not filter out newline characters. \cell }
+{{\i filter_newlines} \cell }{If true, filter newline characters. \cell }
 {\row }
 }
 }{

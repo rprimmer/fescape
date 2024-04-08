@@ -10,7 +10,7 @@
 \DoxyCodeLine{\Hypertarget{fescape_8c_source_l00006}00006\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Options:\(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{fescape_8c_source_l00007}00007\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ -\/h,\ -\/-\/help\ \ \ \ \ \ \ \ Display\ this\ help\ message\ and\ exit\(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{fescape_8c_source_l00008}00008\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ -\/r,\ -\/-\/repeats\ \ \ \ \ Show\ repeated\ non-\/ASCII\ chars\ in\ brackets\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{fescape_8c_source_l00009}00009\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ -\/n,\ -\/-\/newline\ \ \ \ \ Do\ not\ filter\ newline\ characters\(\backslash\)n"{}});\ }
+\DoxyCodeLine{\Hypertarget{fescape_8c_source_l00009}00009\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ -\/n,\ -\/-\/newline\ \ \ \ \ Filter\ newline\ characters\(\backslash\)n"{}});\ }
 \DoxyCodeLine{\Hypertarget{fescape_8c_source_l00010}00010\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ -\/o,\ -\/-\/octal\ \ \ \ \ \ \ Display\ non-\/ASCII\ characters\ in\ octal\ instead\ of\ hex\(\backslash\)n\(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{fescape_8c_source_l00011}00011\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Arguments:\(\backslash\)n"{}});}
 \DoxyCodeLine{\Hypertarget{fescape_8c_source_l00012}00012\ \ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ filename(s)\ \ \ \ \ \ \ filename(s)\ to\ display\(\backslash\)n"{}});}
@@ -39,8 +39,8 @@
 \DoxyCodeLine{\Hypertarget{fescape_8c_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ HANDLE\_ERROR(\textcolor{stringliteral}{"{}unable\ to\ read\ input\ stream"{}});}
 \DoxyCodeLine{\Hypertarget{fescape_8c_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{fescape_8c_source_l00037}00037\ }
-\DoxyCodeLine{\Hypertarget{fescape_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ newlines\ separately\ when\ not\ filtering\ them}}
-\DoxyCodeLine{\Hypertarget{fescape_8c_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!filter\_newlines\ \&\&\ current\_char\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ \{}
+\DoxyCodeLine{\Hypertarget{fescape_8c_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Handle\ newlines\ separately\ when\ filtering\ them}}
+\DoxyCodeLine{\Hypertarget{fescape_8c_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (filter\_newlines\ \&\&\ current\_char\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})\ \{}
 \DoxyCodeLine{\Hypertarget{fescape_8c_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (repeat\_count\ >\ 1\ \&\&\ repeats\ \&\&\ saved\_char\ !=\ \textcolor{charliteral}{'\(\backslash\)n'})\ \{}
 \DoxyCodeLine{\Hypertarget{fescape_8c_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(output\_stream,\ \textcolor{stringliteral}{"{}[\%i]"{}},\ repeat\_count);}
 \DoxyCodeLine{\Hypertarget{fescape_8c_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ repeat\_count\ =\ 1;}

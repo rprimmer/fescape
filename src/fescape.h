@@ -7,8 +7,8 @@
  * non-printable characters. Optionally it can show the count for repeated non-printable characters
  * rather than display each repeated hex/octal code.
  * 
- * @version 1.1
- * @date 2024-03-30
+ * @version 1.2
+ * @date 2024-04-08
  */
 
 #pragma once 
@@ -34,6 +34,6 @@ void usage(const char *program);
  * @param output_stream Output stream to write.
  * @param repeats If true, display repeated character count. 
  * @param octal If true, display control sequences in octal instead of hex. 
- * @param filter_newlines If false, do not filter out newline characters.
+ * @param filter_newlines If true, filter newline characters.
  */
 void fescape(FILE *input_stream, FILE *output_stream, bool repeats, bool octal, bool filter_newlines);

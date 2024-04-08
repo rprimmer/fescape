@@ -122,8 +122,8 @@ Functions</h2></td></tr>
 <div class="textblock"><p>Filter unprintable characters from input stream. </p>
 <dl class="section author"><dt>Author</dt><dd>Robert Primmer (<a href="https://github.com/rprimmer">https://github.com/rprimmer</a>)</dd></dl>
 <p>Files that contain non-printable characters mess up the display when printed (e.g., via cat(1)). This program allows the display of such files, substituting hex (or optionally octal) codes for the non-printable characters. Optionally it can show the count for repeated non-printable characters rather than display each repeated hex/octal code.</p>
-<dl class="section version"><dt>Version</dt><dd>1.1 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>2024-03-30 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2024-04-08 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="fescape_8h_source.html">fescape.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -168,7 +168,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">output_stream</td><td>Output stream to write. </td></tr>
     <tr><td class="paramname">repeats</td><td>If true, display repeated character count. </td></tr>
     <tr><td class="paramname">octal</td><td>If true, display control sequences in octal instead of hex. </td></tr>
-    <tr><td class="paramname">filter_newlines</td><td>If false, do not filter out newline characters. </td></tr>
+    <tr><td class="paramname">filter_newlines</td><td>If true, filter newline characters. </td></tr>
   </table>
   </dd>
 </dl>

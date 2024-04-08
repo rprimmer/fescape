@@ -20,7 +20,7 @@ Short and simple. Follow the original Unix philosophy of a program doing just on
 
 * `-r, --repeats` : display a count for repeated characters instead of displaying the characters themselves
 * `-h, --help`    : display usage
-* `-n, --newline` : don't filter newlines
+* `-n, --newline` : filter newlines
 * `-o, --octal`   : display octal codes instead of default hex codes
 
 ## Key Functions

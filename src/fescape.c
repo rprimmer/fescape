@@ -6,7 +6,7 @@ void usage(const char *program) {
     printf("Options:\n");
     printf("  -h, --help        Display this help message and exit\n");
     printf("  -r, --repeats     Show repeated non-ASCII chars in brackets\n");
-    printf("  -n, --newline     Do not filter newline characters\n"); 
+    printf("  -n, --newline     Filter newline characters\n"); 
     printf("  -o, --octal       Display non-ASCII characters in octal instead of hex\n\n");
     printf("Arguments:\n");
     printf("  filename(s)       filename(s) to display\n");
@@ -35,8 +35,8 @@ void fescape(FILE *input_stream, FILE *output_stream, bool repeats, bool octal, 
             HANDLE_ERROR("unable to read input stream");
         }
 
-        // Handle newlines separately when not filtering them
-        if (!filter_newlines && current_char == '\n') {
+        // Handle newlines separately when filtering them
+        if (filter_newlines && current_char == '\n') {
             if (repeat_count > 1 && repeats && saved_char != '\n') {
                 fprintf(output_stream, "[%i]", repeat_count);
                 repeat_count = 1;
