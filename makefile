@@ -23,6 +23,7 @@ PANDOC			:= $(shell command -v pandoc)
 INSTALL			:= $(shell command -v install)
 DOXYGEN 		:= $(shell command -v doxygen)
 
+
 all: $(BINDIR) $(BIN)
 
 $(BINDIR):

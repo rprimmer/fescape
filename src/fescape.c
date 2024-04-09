@@ -36,15 +36,15 @@ void fescape(FILE *input_stream, FILE *output_stream, bool repeats, bool octal, 
         }
 
         // Handle newlines separately when filtering them
-        if (filter_newlines && current_char == '\n') {
-            if (repeat_count > 1 && repeats && saved_char != '\n') {
-                fprintf(output_stream, "[%i]", repeat_count);
-                repeat_count = 1;
-            }
-            putc(current_char, output_stream);
-            saved_char = current_char;
-            continue; 
-        }
+        // if (!filter_newlines && current_char == '\n') {
+        //     if (repeat_count > 1 && repeats && saved_char == '\n') {
+        //         fprintf(output_stream, "[%i]", repeat_count);
+        //         repeat_count = 1;
+        //     }
+        //     putc(current_char, output_stream);
+        //     saved_char = current_char;
+        //     continue; 
+        // }
 
         if (iscntrl(current_char) || !isprint(current_char)) {
             if (current_char == saved_char && repeats) {
@@ -55,7 +55,7 @@ void fescape(FILE *input_stream, FILE *output_stream, bool repeats, bool octal, 
                     repeat_count = 1;
                 }
                 saved_char = current_char;
-                if (current_char != '\n' || filter_newlines) {
+                if (current_char != '\n' && !filter_newlines) {
                     fprintf(output_stream, octal ? "<%.3o>" : "<0x%02x>", current_char);
                 }
             }

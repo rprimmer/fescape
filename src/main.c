@@ -9,13 +9,13 @@
 #include "fescape.h"
 #include "system-actions.h"
 
-int main(int argc, char **argv) {
+int main(int argc, char **argv) { 
     char program[PATH_MAX];
-    basename_r(argv[0], program); 
-    FILE *fp; 
-    bool repeat_count = false; 
+    basename_r(argv[0], program);
+    FILE *fp;
+    bool repeat_count = false;
     bool show_octal = false;
-    bool filter_newlines = true;
+    bool filter_newlines = false;
 
 #ifdef DEBUG
     fprintf(stderr, "%s, %d: argc: %d, optind: %d\n", basename(__FILE__), __LINE__, argc, optind);
@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
             repeat_count = true;
             break;
         case 'n':
-            filter_newlines = false;
+            filter_newlines = true;
             break;
         case 'o':
             show_octal = true;
