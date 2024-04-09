@@ -4,28 +4,21 @@
         {
             "label": "Build Project",
             "type": "shell",
-            "command": "clang",
+            "command": "make",
+            // Optional: Specify the make target to use; remove if not needed
             "args": [
-                "-g",
-                "${workspaceFolder}/src/*.c",
-                "-o",
-                "${workspaceFolder}/bin/fescape"
+                "-C",
+                "${workspaceFolder}",
+                "all" // This is your make target, change "all" to your specific target if needed
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": {
-                "owner": "cpp",
-                "fileLocation": ["relative", "${workspaceFolder}"],
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "message": 5
-                }
+            "problemMatcher": "$gcc",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
             }
         }
     ]
