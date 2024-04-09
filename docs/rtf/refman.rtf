@@ -204,44 +204,36 @@ fescape.c\par \pard\plain
 00035             HANDLE_ERROR({\cf22 "unable to read input stream"});\par
 00036         \}\par
 00037 \par
-00038         {\cf20 // Handle newlines separately when filtering them}\par
-00039         {\cf19 if} (filter_newlines && current_char == {\cf23 '\\n'}) \{\par
-00040             {\cf19 if} (repeat_count > 1 && repeats && saved_char != {\cf23 '\\n'}) \{\par
-00041                 fprintf(output_stream, {\cf22 "[%i]"}, repeat_count);\par
-00042                 repeat_count = 1;\par
-00043             \}\par
-00044             putc(current_char, output_stream);\par
-00045             saved_char = current_char;\par
-00046             {\cf19 continue}; \par
-00047         \}\par
-00048 \par
-00049         {\cf19 if} (iscntrl(current_char) || !isprint(current_char)) \{\par
-00050             {\cf19 if} (current_char == saved_char && repeats) \{\par
-00051                 repeat_count++;\par
-00052             \} {\cf19 else} \{\par
-00053                 {\cf19 if} (repeat_count > 1 && repeats) \{ \par
-00054                     fprintf(output_stream, {\cf22 "[%i]"}, repeat_count);\par
-00055                     repeat_count = 1;\par
-00056                 \}\par
-00057                 saved_char = current_char;\par
-00058                 {\cf19 if} (current_char != {\cf23 '\\n'} || filter_newlines) \{\par
-00059                     fprintf(output_stream, octal ? {\cf22 "<%.3o>"} : {\cf22 "<0x%02x>"}, current_char);\par
-00060                 \}\par
-00061             \}\par
-00062         \} {\cf19 else} \{\par
-00063             {\cf19 if} (repeat_count > 1 && repeats) \{ {\cf20 // Final repeat count for control sequences}\par
-00064                 fprintf(output_stream, {\cf22 "[%i]"}, repeat_count);\par
-00065                 repeat_count = 1;\par
-00066             \}\par
-00067             putc(current_char, output_stream); \par
-00068             saved_char = EOF; \par
-00069         \}\par
-00070     \}\par
-00071     {\cf20 // Handle the case for the last character being repeated}\par
-00072     {\cf19 if} (repeat_count > 1 && repeats && saved_char != {\cf23 '\\n'}) \{ \par
-00073         fprintf(output_stream, {\cf22 "[%i]"}, repeat_count);\par
-00074     \}\par
-00075 \}\par
+00038         {\cf19 if} (iscntrl(current_char) || !isprint(current_char)) \{\par
+00039             {\cf19 if} (current_char == saved_char && repeats) \{\par
+00040                 repeat_count++;\par
+00041             \} {\cf19 else} \{\par
+00042                 {\cf19 if} (repeat_count > 1 && repeats) \{ \par
+00043                     fprintf(output_stream, {\cf22 "[%i]"}, repeat_count);\par
+00044                     repeat_count = 1;\par
+00045                 \}\par
+00046                 saved_char = current_char;\par
+00047                 {\cf19 if} (filter_newlines || current_char != {\cf23 '\\n'}) \{\par
+00048                     fprintf(output_stream, octal ? {\cf22 "<%.3o>"} : {\cf22 "<0x%02x>"}, current_char);\par
+00049                 \} {\cf19 else} \{\par
+00050                     {\cf19 if} (current_char == {\cf23 '\\n'})\par
+00051                         putc(current_char, output_stream);\par
+00052                 \}\par
+00053             \}\par
+00054         \} {\cf19 else} \{\par
+00055             {\cf19 if} (repeat_count > 1 && repeats) \{ {\cf20 // Final repeat count for control sequences}\par
+00056                 fprintf(output_stream, {\cf22 "[%i]"}, repeat_count);\par
+00057                 repeat_count = 1;\par
+00058             \}\par
+00059             putc(current_char, output_stream); \par
+00060             saved_char = EOF; \par
+00061         \}\par
+00062     \}\par
+00063     {\cf20 // Handle the case for the last character being repeated}\par
+00064     {\cf19 if} (repeat_count > 1 && repeats && saved_char != {\cf23 '\\n'}) \{ \par
+00065         fprintf(output_stream, {\cf22 "[%i]"}, repeat_count);\par
+00066     \}\par
+00067 \}\par
 }
 \par \pard\plain 
 
@@ -439,70 +431,72 @@ main.c\par \pard\plain
 00009 {\cf21 #include "fescape.h"}\par
 00010 {\cf21 #include "system-actions.h"}\par
 00011 \par
-00012 {\cf18 int} main({\cf18 int} argc, {\cf18 char} **argv) \{\par
+00012 {\cf18 int} main({\cf18 int} argc, {\cf18 char} **argv) \{ \par
 00013     {\cf18 char} program[PATH_MAX];\par
-00014     basename_r(argv[0], program); \par
-00015     FILE *fp; \par
-00016     {\cf18 bool} repeat_count = {\cf17 false}; \par
+00014     basename_r(argv[0], program);\par
+00015     FILE *fp;\par
+00016     {\cf18 bool} repeat_count = {\cf17 false};\par
 00017     {\cf18 bool} show_octal = {\cf17 false};\par
-00018     {\cf18 bool} filter_newlines = {\cf17 true};\par
+00018     {\cf18 bool} filter_newlines = {\cf17 false};\par
 00019 \par
 00020 {\cf21 #ifdef DEBUG}\par
-00021     fprintf(stderr, {\cf22 "%s, %d: argc: %d, optind: %d\\n"}, basename(__FILE__), __LINE__, argc, optind);\par
-00022 {\cf21 #endif }{\cf20 // DEBUG}\par
-00023 \par
-00024     {\cf20 // Handle switches}\par
-00025     {\cf18 int} option = 0;\par
-00026     {\cf18 int} option_index = 0;\par
-00027     {\cf17 static} {\cf17 struct }option long_options[] = \{\{{\cf22 "help"}, no_argument, 0, {\cf23 'h'}\},\par
-00028                                            \{{\cf22 "repeats"}, no_argument, 0, {\cf23 'r'}\},\par
-00029                                            \{{\cf22 "newline"}, no_argument, 0, {\cf23 'n'}\},\par
-00030                                            \{{\cf22 "octal"}, no_argument, 0, {\cf23 'o'}\},\par
-00031                                            \{0, 0, 0, 0\}\};\par
-00032     {\cf19 while} ((option = getopt_long(argc, argv, {\cf22 "hrno"}, long_options, &option_index)) != -1) \{\par
-00033         {\cf19 switch} (option) \{\par
-00034         {\cf19 case} {\cf23 'h'}:\par
-00035             usage(program);\par
-00036             {\cf19 break};\par
-00037         {\cf19 case} {\cf23 'r'}:\par
-00038             repeat_count = {\cf17 true};\par
-00039             {\cf19 break};\par
-00040         {\cf19 case} {\cf23 'n'}:\par
-00041             filter_newlines = {\cf17 false};\par
-00042             {\cf19 break};\par
-00043         {\cf19 case} {\cf23 'o'}:\par
-00044             show_octal = {\cf17 true};\par
-00045             {\cf19 break};\par
-00046         {\cf19 default}:\par
-00047             HANDLE_ERROR({\cf22 "invalid switch provided"});\par
-00048         \}\par
-00049     \}\par
-00050 \par
-00051 {\cf21 #ifdef DEBUG}\par
-00052     fprintf(stderr, {\cf22 "%s, %d: argc: %d, optind: %d\\n"}, basename(__FILE__), __LINE__, argc, optind);\par
-00053 {\cf21 #endif }{\cf20 // DEBUG}\par
-00054 \par
-00055     {\cf20 // Handle arguments and actions}\par
-00056     {\cf18 int} retval = 0;\par
-00057 \par
-00058     {\cf19 if} (optind >= argc)\par
-00059         fescape(stdin, stdout, repeat_count, show_octal, filter_newlines);\par
-00060     {\cf19 else}\par
-00061         {\cf19 for} (; optind < argc; optind++) \{\par
-00062             {\cf19 if} (strcmp(argv[optind], {\cf22 "-"}) == 0)\par
-00063                 fescape(stdin, stdout, repeat_count, show_octal, filter_newlines);\par
-00064             {\cf19 else} \{\par
-00065                 {\cf19 if} ((fp = fopen(argv[optind], {\cf22 "r"})) == NULL) \par
-00066                     HANDLE_ERROR({\cf22 "fopen: %s, file: %s"}, strerror(errno), argv[optind]);\par
-00067 \par
-00068                 fescape(fp, stdout, repeat_count, show_octal, filter_newlines);\par
-00069                 fprintf(stdout, {\cf22 "\\n"});\par
-00070                 fclose(fp);\par
-00071             \} \par
-00072         \} \par
-00073 \par
-00074     {\cf19 return} ferror(stdout) ? EOF : retval;\par
-00075 \} \par
+00021     setbuf(stdout, NULL); \par
+00022     setbuf(stderr, NULL);\par
+00023     fprintf(stderr, {\cf22 "%s, %d: argc: %d, optind: %d\\n"}, basename(__FILE__), __LINE__, argc, optind);\par
+00024 {\cf21 #endif }{\cf20 // DEBUG}\par
+00025 \par
+00026     {\cf20 // Handle switches}\par
+00027     {\cf18 int} option = 0;\par
+00028     {\cf18 int} option_index = 0;\par
+00029     {\cf17 static} {\cf17 struct }option long_options[] = \{\{{\cf22 "help"}, no_argument, 0, {\cf23 'h'}\},\par
+00030                                            \{{\cf22 "repeats"}, no_argument, 0, {\cf23 'r'}\},\par
+00031                                            \{{\cf22 "newline"}, no_argument, 0, {\cf23 'n'}\},\par
+00032                                            \{{\cf22 "octal"}, no_argument, 0, {\cf23 'o'}\},\par
+00033                                            \{0, 0, 0, 0\}\};\par
+00034     {\cf19 while} ((option = getopt_long(argc, argv, {\cf22 "hrno"}, long_options, &option_index)) != -1) \{\par
+00035         {\cf19 switch} (option) \{\par
+00036         {\cf19 case} {\cf23 'h'}:\par
+00037             usage(program);\par
+00038             {\cf19 break};\par
+00039         {\cf19 case} {\cf23 'r'}:\par
+00040             repeat_count = {\cf17 true};\par
+00041             {\cf19 break};\par
+00042         {\cf19 case} {\cf23 'n'}:\par
+00043             filter_newlines = {\cf17 true};\par
+00044             {\cf19 break};\par
+00045         {\cf19 case} {\cf23 'o'}:\par
+00046             show_octal = {\cf17 true};\par
+00047             {\cf19 break};\par
+00048         {\cf19 default}:\par
+00049             HANDLE_ERROR({\cf22 "invalid switch provided"});\par
+00050         \}\par
+00051     \}\par
+00052 \par
+00053 {\cf21 #ifdef DEBUG}\par
+00054     fprintf(stderr, {\cf22 "%s, %d: argc: %d, optind: %d\\n"}, basename(__FILE__), __LINE__, argc, optind);\par
+00055 {\cf21 #endif }{\cf20 // DEBUG}\par
+00056 \par
+00057     {\cf20 // Handle arguments and actions}\par
+00058     {\cf18 int} retval = 0;\par
+00059 \par
+00060     {\cf19 if} (optind >= argc)\par
+00061         fescape(stdin, stdout, repeat_count, show_octal, filter_newlines);\par
+00062     {\cf19 else}\par
+00063         {\cf19 for} (; optind < argc; optind++) \{\par
+00064             {\cf19 if} (strcmp(argv[optind], {\cf22 "-"}) == 0)\par
+00065                 fescape(stdin, stdout, repeat_count, show_octal, filter_newlines);\par
+00066             {\cf19 else} \{\par
+00067                 {\cf19 if} ((fp = fopen(argv[optind], {\cf22 "r"})) == NULL) \par
+00068                     HANDLE_ERROR({\cf22 "fopen: %s, file: %s"}, strerror(errno), argv[optind]);\par
+00069 \par
+00070                 fescape(fp, stdout, repeat_count, show_octal, filter_newlines);\par
+00071                 fprintf(stdout, {\cf22 "\\n"});\par
+00072                 fclose(fp);\par
+00073             \} \par
+00074         \} \par
+00075 \par
+00076     {\cf19 return} ferror(stdout) ? EOF : retval;\par
+00077 \} \par
 }
 \par \pard\plain 
 

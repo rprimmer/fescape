@@ -23,7 +23,6 @@ PANDOC			:= $(shell command -v pandoc)
 INSTALL			:= $(shell command -v install)
 DOXYGEN 		:= $(shell command -v doxygen)
 
-
 all: $(BINDIR) $(BIN)
 
 $(BINDIR):
@@ -32,8 +31,8 @@ $(BINDIR):
 $(BIN): $(OBJS)| $(OBJDIR) $(BINDIR)
 	$(CC) $(CFLAGS) $(OBJS) -o $@ $(LDFLAGS)
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c $(SRCDIR)/%.h | $(OBJDIR)
-	$(CC) $(CFLAGS) -v -c $< -o $@
+$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: release markdown docs clean install manpage help
 
