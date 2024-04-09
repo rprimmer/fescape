@@ -4,7 +4,7 @@ endif
 
 PROGRAM 		:= fescape
 INSTALL_DIR		:= /usr/local/bin/
-INSTALL_ARGS	:= -m 755
+INSTALL_ARGS		:= -m 755
 CC      		:= clang
 CFLAGS			:= -g -Wall -Wextra -DDEBUG $(INCLUDES)
 LDFLAGS			?=
