@@ -6,10 +6,10 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/fescape",
-            "args": ["-g", "makefiled"],
+            "args": ["test2"],
             "stopAtEntry": false, // Set to true if you want to stop at the start of 'main'
             "cwd": "${workspaceFolder}",
-            "preLaunchTask": "Build Project",
+            "preLaunchTask": "Build Project", 
             "MIMode": "lldb",
             "externalConsole": false
         }

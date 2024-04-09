@@ -18,6 +18,8 @@ int main(int argc, char **argv) {
     bool filter_newlines = false;
 
 #ifdef DEBUG
+    setbuf(stdout, NULL); 
+    setbuf(stderr, NULL);
     fprintf(stderr, "%s, %d: argc: %d, optind: %d\n", basename(__FILE__), __LINE__, argc, optind);
 #endif // DEBUG
 

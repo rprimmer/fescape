@@ -32,8 +32,8 @@ $(BINDIR):
 $(BIN): $(OBJS)| $(OBJDIR) $(BINDIR)
 	$(CC) $(CFLAGS) $(OBJS) -o $@ $(LDFLAGS)
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(SRCDIR)/%.h | $(OBJDIR)
+	$(CC) $(CFLAGS) -v -c $< -o $@
 
 .PHONY: release markdown docs clean install manpage help
 
