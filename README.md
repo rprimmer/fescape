@@ -8,6 +8,8 @@ Short and simple. Follow the original Unix philosophy of a program doing just on
 
 ## File Locations
 
+File locations adjustable in makefile.
+
 * Binary executable (`fescape`) located in `/usr/local/bin`
 * Manpage (`fescape.1`) located in `/usr/local/share/man/man1`
 * API documentation located in project folder as `fescape-apidoc.pdf` and `fescape-apidoc.html`. Doc source files in `docs` folder.
@@ -47,14 +49,3 @@ Short and simple. Follow the original Unix philosophy of a program doing just on
 ## Results
 
 Haven't discovered any issues yet.
-
-## Lessons
-
-1. **##\_\_VA_ARGS__**: GNU macro feature useful for variadic functions.
-
-2. **VS Code**: By default, VSC doesn't play nice with make(1) when debugging from within VSC. The VSC extension "Makefile Tools" is needed.
-
-## TODO
-
-* [x] Figure out best way to handle variadic function fronted by macro.
-* [x] Optimize functions in system-actions.c.

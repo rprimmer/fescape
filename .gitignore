@@ -56,3 +56,4 @@ dkms.conf
 
 # Project specific
 bin/fescape
+test*

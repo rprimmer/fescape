@@ -1,0 +1,17 @@
+This file has been automatically generated using the following command:
+
+	git log --pretty=format:'%h %d %ai - %s'
+
+a1317c7  (HEAD -> main) Tue Apr 9 17:17:50 2024 -0400 - nit change to makefile
+95f0113  (origin/show-NL-hex-code, show-NL-hex-code) Tue Apr 9 12:36:01 2024 -0400 - v2 complete
+bf4596e  Tue Apr 9 12:22:52 2024 -0400 - Updated to show newlines
+a8e9157  Tue Apr 9 09:13:00 2024 -0400 - prep for new branch
+26cbfd5  (origin/main) Mon Apr 8 11:05:29 2024 -0400 - Changed behavior of -n
+ec8e480  Thu Apr 4 09:42:53 2024 -0400 - updates makefile
+766a151  Sat Mar 30 15:31:03 2024 -0400 - Updated readme
+825b643  Sat Mar 30 12:47:16 2024 -0400 - Unneeded file
+070976b  Sat Mar 30 12:40:31 2024 -0400 - Same to pdf
+7e1506b  Sat Mar 30 12:39:42 2024 -0400 - Updated doc html location
+3bea930  Sat Mar 30 12:37:24 2024 -0400 - Explicitly make doc
+2a6328f  Sat Mar 30 11:57:24 2024 -0400 - Added --newline switch
+2c4a0e6  Sun Mar 24 09:33:21 2024 -0400 - v1
