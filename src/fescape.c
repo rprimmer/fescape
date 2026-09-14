@@ -1,67 +1,49 @@
 #include "fescape.h"
-#include "system-actions.h"
 
-void usage(const char *program) {
-    printf("Usage: %s [OPTIONS] <ARGUMENTS>\n\n", program);
-    printf("Options:\n");
-    printf("  -h, --help        Display this help message and exit\n");
-    printf("  -r, --repeats     Show repeated non-ASCII chars in brackets\n");
-    printf("  -n, --newline     Filter newline characters\n"); 
-    printf("  -o, --octal       Display non-ASCII characters in octal instead of hex\n\n");
-    printf("Arguments:\n");
-    printf("  filename(s)       filename(s) to display\n");
-    printf("  -                 streams from stdin\n");
-    printf("  no argument       equivalent to -, streams from stdin\n\n");
-    printf("Examples:\n");
-    printf("  %s\n", program);
-    printf("  %s -\n", program);
-    printf("  %s MyBinaryFile\n", program);
-    printf("  %s File1 MyBinaryFile2 File3\n\n", program);
-    // printf("Restrictions:\n");
-    // printf("  None.\n\n");
-    // printf("Notes:\n");
-    // printf("  None.\n");
-    exit(EXIT_SUCCESS);
-} // usage()
+#include <errno.h>
+#include <stdint.h>
 
-void fescape(FILE *input_stream, FILE *output_stream, bool repeats, bool octal, bool filter_newlines) {
-    int current_char;
-    int saved_char = EOF;
-    int repeat_count = 1;
+static int write_run(FILE *output, int byte, size_t count,
+                     const struct fescape_options *options) {
+    if ((byte >= 0x20 && byte <= 0x7e) ||
+        (byte == '\n' && !options->filter_newlines))
+        return fputc(byte, output) == EOF ? -1 : 0;
 
-    while ((current_char = getc(input_stream)) != EOF) {
-        if (ferror(input_stream)) {
-            fclose(input_stream);
-            HANDLE_ERROR("unable to read input stream");
+    if (fprintf(output, options->octal ? "<%03o>" : "<0x%02x>",
+                (unsigned int)byte) < 0)
+        return -1;
+    if (count > 1 && fprintf(output, "[%zu]", count) < 0)
+        return -1;
+    return 0;
+}
+
+int fescape(FILE *input, FILE *output, const struct fescape_options *options) {
+    int saved = EOF;
+    size_t count = 0;
+    int byte;
+
+    errno = 0;
+    while ((byte = fgetc(input)) != EOF) {
+        bool escaped = (byte < 0x20 || byte > 0x7e) &&
+                       (byte != '\n' || options->filter_newlines);
+        if (options->repeats && escaped && byte == saved && count < SIZE_MAX) {
+            ++count;
+            continue;
         }
+        if (saved != EOF && write_run(output, saved, count, options) < 0)
+            goto failure;
+        saved = byte;
+        count = 1;
+    }
 
-        if (iscntrl(current_char) || !isprint(current_char)) {
-            if (current_char == saved_char && repeats) {
-                repeat_count++;
-            } else {
-                if (repeat_count > 1 && repeats) { 
-                    fprintf(output_stream, "[%i]", repeat_count);
-                    repeat_count = 1;
-                }
-                saved_char = current_char;
-                if (filter_newlines || current_char != '\n') {
-                    fprintf(output_stream, octal ? "<%.3o>" : "<0x%02x>", current_char);
-                } else {
-                    if (current_char == '\n')
-                        putc(current_char, output_stream);
-                }
-            }
-        } else {
-            if (repeat_count > 1 && repeats) { // Final repeat count for control sequences
-                fprintf(output_stream, "[%i]", repeat_count);
-                repeat_count = 1;
-            }
-            putc(current_char, output_stream); 
-            saved_char = EOF; 
-        }
-    }
-    // Handle the case for the last character being repeated
-    if (repeat_count > 1 && repeats && saved_char != '\n') { 
-        fprintf(output_stream, "[%i]", repeat_count);
-    }
+    if (ferror(input))
+        goto failure;
+    if (saved != EOF && write_run(output, saved, count, options) < 0)
+        goto failure;
+    return 0;
+
+failure:
+    if (errno == 0)
+        errno = EIO;
+    return -1;
 }

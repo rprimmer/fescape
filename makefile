@@ -1,89 +1,77 @@
-ifndef MAKE_VERSION
-$(error This makefile expects GNU Make.)
-endif
+.DEFAULT_GOAL := all
 
-PROGRAM 		:= fescape
-INSTALL_DIR		:= /usr/local/bin/
-INSTALL_ARGS		:= -m 755
-CC      		:= clang
-CFLAGS			:= -g -Wall -Wextra -DDEBUG $(INCLUDES)
-LDFLAGS			?=
-INCLUDES		?=
-LIBS			?=
-SRCDIR     		:= src
-OBJDIR     		:= obj
-DOCDIR  		:= docs
-MANDIR			:= man
-BINDIR  		:= bin
-BIN     		:= $(BINDIR)/$(PROGRAM)
-SRCS    		= $(wildcard $(SRCDIR)/*.c)
-OBJS    		= $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRCS))
-MANPAGE 		:= $(PROGRAM).1
-PANDOC			:= $(shell command -v pandoc)
-INSTALL			:= $(shell command -v install)
-DOXYGEN 		:= $(shell command -v doxygen)
+CC ?= cc
+CPPFLAGS ?=
+CFLAGS ?= -O2 -g
+LDFLAGS ?=
+LDLIBS ?=
+PYTHON ?= python3
+PREFIX ?= /usr/local
+DESTDIR ?=
+DOXYGEN ?= doxygen
+PANDOC ?= pandoc
 
-all: $(BINDIR) $(BIN)
+WARNINGS := -std=c11 -Wall -Wextra -Wpedantic
+SOURCES := src/main.c src/fescape.c
+OBJECTS := $(SOURCES:src/%.c=build/%.o)
+DEBUG_OBJECTS := $(SOURCES:src/%.c=build/debug/%.o)
 
-$(BINDIR):
-	mkdir -p $(SRCDIR) $(OBJDIR) $(BINDIR) $(DOCDIR) $(MANDIR)
+.PHONY: all release debug test docs markdown manpage install clean distclean help
+all: build/fescape
+release: all
+debug: build/debug/fescape
 
-$(BIN): $(OBJS)| $(OBJDIR) $(BINDIR)
-	$(CC) $(CFLAGS) $(OBJS) -o $@ $(LDFLAGS)
+build/fescape: $(OBJECTS)
+	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+build/debug/fescape: $(DEBUG_OBJECTS)
+	$(CC) $(LDFLAGS) $^ $(LDLIBS) -o $@
 
-.PHONY: release markdown docs clean install manpage help
+build/%.o: src/%.c
+	@mkdir -p $(@D)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(WARNINGS) -MMD -MP -c $< -o $@
 
-help:
-	@echo "make bin --> create project directory structure"
-	@echo "make --> create debug version"
-	@echo "make release --> create final version for release"
-	@echo "make markdown --> convert markdown files"
-	@echo "make manpage --> create manpage"
-	@echo "make docs --> create API doc"
-	@echo "make install --> install executable"
-	@echo "make clean --> removed unneeded files"
-	@echo "make help --> display this help text"
+build/debug/%.o: src/%.c
+	@mkdir -p $(@D)
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(WARNINGS) -O0 -g3 -MMD -MP -c $< -o $@
 
-release: CFLAGS := -Wall -Wextra -O2 -DNDEBUG $(INCLUDES)
-release: clean markdown docs manpage $(BIN)
-	@echo "Release build complete."
+-include $(OBJECTS:.o=.d) $(DEBUG_OBJECTS:.o=.d)
 
-markdown: README.md
-ifndef PANDOC
-	$(error "pandoc(1) not found.")
-endif
-	@$(PANDOC) README.md -o readme.pdf
+test: build/fescape
+	$(PYTHON) tests/test_fescape.py $(CURDIR)/build/fescape
+
+manpage: build/man/fescape.1
+build/man/fescape.1: man/fescape.1.in
+	@mkdir -p $(@D)
+	cp $< $@
 
 docs:
-ifndef DOXYGEN
-	$(error "doxygen(1) not found.")
-endif
-	$(DOXYGEN) Doxyfile > makefile.out 2>&1
-	$(MAKE) -C $(DOCDIR)/latex >> makefile.out 2>&1
-	ln -sf docs/html/index.html $(PROGRAM)-apidoc.html
-	cp docs/latex/refman.pdf ./$(PROGRAM)-apidoc.pdf
+	@mkdir -p build/docs
+	$(DOXYGEN) Doxyfile
 
-manpage:
-	sed 's/@MAN_DATE@/$(shell date "+%B %d, %Y")/' $(MANDIR)/$(PROGRAM).1.in > $(MANDIR)/$(MANPAGE)
+markdown: build/readme.html
+build/readme.html: README.md
+	@mkdir -p $(@D)
+	$(PANDOC) --standalone $< -o $@
+
+install: all manpage
+	install -d "$(DESTDIR)$(PREFIX)/bin" "$(DESTDIR)$(PREFIX)/share/man/man1"
+	install -m 755 build/fescape "$(DESTDIR)$(PREFIX)/bin/fescape"
+	install -m 644 build/man/fescape.1 "$(DESTDIR)$(PREFIX)/share/man/man1/fescape.1"
 
 clean:
-	@if [ -z "$(BINDIR)" ] || [ -z "$(OBJDIR)" ]; then \
-		echo "Error: BINDIR or OBJDIR is unset or empty; clean operation aborted to prevent potential harm."; \
-		exit 1; \
-	fi
-	@echo "Removing objects and binaries..."
-	@find ./$(BINDIR) -type f -exec rm -f {} +
-	@find ./$(OBJDIR) -type f -exec rm -f {} +
-	@rm -rf *.dSYM
-	@rm -f readme.pdf $(PROGRAM)-apidoc.*
-	@echo "Clean operation completed safely."
+	rm -f $(OBJECTS) $(OBJECTS:.o=.d) $(DEBUG_OBJECTS) $(DEBUG_OBJECTS:.o=.d)
 
-install:
-ifndef INSTALL
-	$(error "install(1) not found.")
-endif
-	$(INSTALL) $(INSTALL_ARGS) $(BINDIR)/$(PROGRAM) $(INSTALL_DIR)
-	@echo "Installation successful. $(INSTALL_DIR)$(PROGRAM) can be used"
+distclean:
+	rm -rf build
+
+help:
+	@echo 'make / release  Build build/fescape'
+	@echo 'make debug      Build build/debug/fescape'
+	@echo 'make test       Run regression tests (Python 3)'
+	@echo 'make manpage    Copy the manual into build/man/'
+	@echo 'make docs       Generate HTML API documentation (Doxygen)'
+	@echo 'make markdown   Generate build/readme.html (Pandoc)'
+	@echo 'make install    Install executable and manual; supports PREFIX and DESTDIR'
+	@echo 'make clean      Remove compiler intermediates, retaining executables and docs'
+	@echo 'make distclean  Remove all generated build output'

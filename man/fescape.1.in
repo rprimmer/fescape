@@ -1,58 +1,44 @@
-.TH fescape 1
+.TH FESCAPE 1 "September 2026"
 .SH NAME
-fescape \- filter unprintable characters from input stream
-.SH USAGE
-.B fescape [OPTIONS] <ACTION>
+fescape \- escape non-printable bytes in a stream
+.SH SYNOPSIS
+.B fescape
+.RI [ OPTIONS ]
+.RI [ FILE " ..."]
 .SH DESCRIPTION
-Files that contain non-printable characters mess up the display when printed (e.g., via cat(1)).
-This program allows the streaming of such files, substituting hex (or optionally octal) codes for the
-non-printable characters. Optionally it can show the count for repeated non-printable characters
-rather than display each repeated hex/octal code.
+Copy printable ASCII bytes (0x20 through 0x7e), replacing other bytes with
+hexadecimal escapes such as <0x00>. Newline bytes are preserved by default.
+Input is interpreted as bytes, not Unicode characters.
+With no files, read standard input. A file named \- reads standard input at
+that position. Files are processed in order with no added separators.
 .SH OPTIONS
 .TP
+.B \-h, \-\-help
+Display help and exit.
 .TP
-\fB\-h, --help\fR
-.br 
-Displays command help.
+.B \-r, \-\-repeats
+Collapse runs of escaped bytes into <code>[count], including the first byte
+in the count. Counts reset for each input. Unescaped newlines are preserved.
 .TP
-\fB\-r, --repeats\fR
-.br 
-Display a count for repeated characters instead of the characters themselves.
+.B \-n, \-\-newline
+Escape newlines as <0x0a> (or <012> with \-o).
 .TP
-\fB\-n, --newline\fR
-.br
-Do not filter newline characters.
+.B \-o, \-\-octal
+Use three-digit octal escapes instead of hexadecimal.
 .TP
-\fB\-o, --octal\fR
-.br
-Display octal codes instead of default hex codes.
-.SH ARGUMENTS
-.TP
-.TP 
-\fB filename(s) \fR
-.br 
-File(s) to display or stdin if none specified.
-.SH RESTRICTIONS
-.TP
-None. 
-.\" .SH NOTES
-.\" .TP
-.\" Note text.
+.B \-\-
+End option parsing; useful for filenames beginning with a dash.
 .SH EXAMPLES
-.TP
-fescape
-.TP
-fescape -
-.TP
-fescape -cn File1 BinaryFile2
-.SH FILE LOCATIONS 
-.TP
-/usr/local/bin/fescape or ~/bin
-Executable 
-.TP
-/usr/local/share/man/man1/fescape.1
-Manpage 
-.\" .SH AUTHOR
-.\" .nf
-.\" Robert Primmer (https://github.com/rprimmer)
+.nf
+fescape binary.dat
+fescape \-rn file1 file2
+fescape file1 \- file2
+fescape \-\- \-filename
 .fi
+.SH EXIT STATUS
+Zero on success, nonzero for invalid options or input/output failures.
+Input failures are reported on standard error; subsequent files are processed.
+.SH NOTES
+Place options before filenames. Output is independent of the locale.
+.SH AUTHOR
+Robert Primmer

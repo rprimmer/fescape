@@ -1,77 +1,94 @@
+#include "fescape.h"
+
+#include <errno.h>
 #include <getopt.h>
-#include <libgen.h>
-#include <stdbool.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
 
-#include "fescape.h"
-#include "system-actions.h"
+static void usage(FILE *output, const char *program) {
+    fprintf(output,
+            "Usage: %s [OPTIONS] [FILE ...]\n\n"
+            "Escape non-printable bytes; read stdin when FILE is omitted or '-'.\n\n"
+            "  -h, --help       Display this help and exit\n"
+            "  -r, --repeats    Collapse repeated escaped bytes into <code>[count]\n"
+            "  -n, --newline    Escape newlines too (otherwise preserve them)\n"
+            "  -o, --octal      Use octal instead of hexadecimal escapes\n\n"
+            "Use -- before filenames that begin with '-'.\n"
+            "Examples:\n"
+            "  %s -rn binary.dat\n"
+            "  %s file1 - file2\n", program, program, program);
+}
 
-int main(int argc, char **argv) { 
-    char program[PATH_MAX];
-    basename_r(argv[0], program);
-    FILE *fp;
-    bool repeat_count = false;
-    bool show_octal = false;
-    bool filter_newlines = false;
+static void report_error(const char *program, const char *source) {
+    int error = errno;
+    fprintf(stderr, "%s: %s: %s\n", program, source,
+            strerror(error ? error : EIO));
+}
 
-#ifdef DEBUG
-    setbuf(stdout, NULL); 
-    setbuf(stderr, NULL);
-    fprintf(stderr, "%s, %d: argc: %d, optind: %d\n", basename(__FILE__), __LINE__, argc, optind);
-#endif // DEBUG
+static int filter_input(const char *program, const char *name,
+                        const struct fescape_options *options) {
+    bool is_stdin = strcmp(name, "-") == 0;
+    const char *label = is_stdin ? "standard input" : name;
+    FILE *input = is_stdin ? stdin : fopen(name, "rb");
+    if (input == NULL) {
+        report_error(program, label);
+        return EXIT_FAILURE;
+    }
 
-    // Handle switches
-    int option = 0;
-    int option_index = 0;
-    static struct option long_options[] = {{"help", no_argument, 0, 'h'},
-                                           {"repeats", no_argument, 0, 'r'},
-                                           {"newline", no_argument, 0, 'n'},
-                                           {"octal", no_argument, 0, 'o'},
-                                           {0, 0, 0, 0}};
-    while ((option = getopt_long(argc, argv, "hrno", long_options, &option_index)) != -1) {
+    int status = EXIT_SUCCESS;
+    if (fescape(input, stdout, options) < 0) {
+        report_error(program, ferror(stdout) ? "standard output" : label);
+        status = EXIT_FAILURE;
+    }
+    if (!is_stdin && fclose(input) == EOF) {
+        report_error(program, label);
+        status = EXIT_FAILURE;
+    }
+    return status;
+}
+
+int main(int argc, char **argv) {
+    const char *program = strrchr(argv[0], '/');
+    program = program ? program + 1 : argv[0];
+    struct fescape_options options = {false, false, false};
+    static const struct option long_options[] = {
+        {"help", no_argument, NULL, 'h'},
+        {"repeats", no_argument, NULL, 'r'},
+        {"newline", no_argument, NULL, 'n'},
+        {"octal", no_argument, NULL, 'o'},
+        {NULL, 0, NULL, 0}
+    };
+
+    int option;
+    opterr = 0;
+    while ((option = getopt_long(argc, argv, "+hrno", long_options, NULL)) != -1) {
         switch (option) {
         case 'h':
-            usage(program);
-            break;
-        case 'r':
-            repeat_count = true;
-            break;
-        case 'n':
-            filter_newlines = true;
-            break;
-        case 'o':
-            show_octal = true;
-            break;
+            usage(stdout, program);
+            return fflush(stdout) == EOF ? EXIT_FAILURE : EXIT_SUCCESS;
+        case 'r': options.repeats = true; break;
+        case 'n': options.filter_newlines = true; break;
+        case 'o': options.octal = true; break;
         default:
-            HANDLE_ERROR("invalid switch provided");
+            fprintf(stderr, "%s: invalid option; use --help for usage\n", program);
+            return EXIT_FAILURE;
         }
     }
 
-#ifdef DEBUG
-    fprintf(stderr, "%s, %d: argc: %d, optind: %d\n", basename(__FILE__), __LINE__, argc, optind);
-#endif // DEBUG
-
-    // Handle arguments and actions
-    int retval = 0;
-
-    if (optind >= argc)
-        fescape(stdin, stdout, repeat_count, show_octal, filter_newlines);
-    else
-        for (; optind < argc; optind++) {
-            if (strcmp(argv[optind], "-") == 0)
-                fescape(stdin, stdout, repeat_count, show_octal, filter_newlines);
-            else {
-                if ((fp = fopen(argv[optind], "r")) == NULL) 
-                    HANDLE_ERROR("fopen: %s, file: %s", strerror(errno), argv[optind]);
-
-                fescape(fp, stdout, repeat_count, show_octal, filter_newlines);
-                fprintf(stdout, "\n");
-                fclose(fp);
-            } 
-        } 
-
-    return ferror(stdout) ? EOF : retval;
-} 
+    int status = EXIT_SUCCESS;
+    if (optind == argc)
+        status = filter_input(program, "-", &options);
+    else {
+        for (; optind < argc; ++optind) {
+            if (filter_input(program, argv[optind], &options) != EXIT_SUCCESS)
+                status = EXIT_FAILURE;
+            if (ferror(stdout))
+                break;
+        }
+    }
+    if (fflush(stdout) == EOF) {
+        report_error(program, "standard output");
+        status = EXIT_FAILURE;
+    }
+    return status;
+}

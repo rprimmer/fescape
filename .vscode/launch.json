@@ -5,8 +5,8 @@
             "name": "Debug with LLDB",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/fescape",
-            "args": ["test2"],
+            "program": "${workspaceFolder}/build/debug/fescape",
+            "args": ["--help"],
             "stopAtEntry": false, // Set to true if you want to stop at the start of 'main'
             "cwd": "${workspaceFolder}",
             "preLaunchTask": "Build Project", 

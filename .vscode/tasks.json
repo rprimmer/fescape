@@ -9,7 +9,7 @@
             "args": [
                 "-C",
                 "${workspaceFolder}",
-                "all" // This is your make target, change "all" to your specific target if needed
+                "debug"
             ],
             "group": {
                 "kind": "build",

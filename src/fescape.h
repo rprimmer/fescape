@@ -1,39 +1,25 @@
-/**
- * @file fescape.h
- * @author Robert Primmer (https://github.com/rprimmer)
- * @brief Filter unprintable characters from input stream.
- * @details Files that contain non-printable characters mess up the display when printed (e.g., via cat(1)).
- * This program allows the display of such files, substituting hex (or optionally octal) codes for the
- * non-printable characters. Optionally it can show the count for repeated non-printable characters
- * rather than display each repeated hex/octal code.
- * 
- * @version 1.2
- * @date 2024-04-08
+/** @file fescape.h
+ * Convert non-printable bytes to hexadecimal or octal escapes.
  */
+#ifndef FESCAPE_H
+#define FESCAPE_H
 
-#pragma once 
-
-#include <ctype.h>
-#include <stdio.h> 
 #include <stdbool.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
+#include <stdio.h>
+
+/** Output options for the byte filter. */
+struct fescape_options {
+    bool repeats; /**< Collapse repeated escaped bytes with a total count in brackets. */
+    bool octal; /**< Use three-digit octal instead of hexadecimal. */
+    bool filter_newlines; /**< Escape LF bytes instead of passing them through. */
+};
 
 /**
- * @brief Display help to user
- * 
- * @param program Calling program name
+ * Filter a stream using printable ASCII (0x20 through 0x7e).
+ * Return 0 on success, or -1 with errno set on a read or write failure.
+ * Streams remain owned by the caller; output is not flushed or closed here.
+ * Repeat counts are local to this call and include the first byte of each run.
  */
-void usage(const char *program); 
+int fescape(FILE *input, FILE *output, const struct fescape_options *options);
 
-/**
- * @brief convert non-ASCII characters to hex or octal representation
- * 
- * @param input_stream Input stream to read.
- * @param output_stream Output stream to write.
- * @param repeats If true, display repeated character count. 
- * @param octal If true, display control sequences in octal instead of hex. 
- * @param filter_newlines If true, filter newline characters.
- */
-void fescape(FILE *input_stream, FILE *output_stream, bool repeats, bool octal, bool filter_newlines);
+#endif
